@@ -7,10 +7,108 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
+        <div id="Main">
+            <form id="theForm" runat="server">
+                <h1>
+                    Kunder
+                </h1>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade ;_; Gör om, Gör rätt"
+                cssClass="ValidationSumErrors" />
+
+
+                <asp:ListView ID="ListView1" runat="server"
+                    ItemType="Aventyrliga kontakter.Model.Contact"
+
+                    SelectMethod="ContactListView_GetData"
+
+                    InsertMethod="ContactListView_InsertItem"
+
+                    UpdateMethod="ContactListView_UpdateItem"
+
+                    DeleteMethod="ContactListView_DeleteItem"
+
+                    DataKeyNames="ContactId"
+
+                    InsertItemPosition="FirstItem">
+                    <LayoutTemplate>
+                        <table>
+                            <tr>
+                                <th>
+                                    Förnamn
+                                </th>
+                                <th>
+                                    Efternamn
+                                </th>
+                                <th>
+                                    Epostadress
+                                </th>
+                            </tr>
+                            <asp:PlaceHolder ID="Placeholder1" runat="server"/>
+                        </table>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <%#: Item.FirstName %>
+                            </td>
+                            <td>
+                                <%#: Item.LastName %>
+                            </td>
+                            <td>
+                                <%#: Item.EmailAdress %>
+                            </td>
+                            <td class="command">
+                                <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false"/>
+                                <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"/>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <EmptyDataTemplate>
+                         <table class="grid">
+                        <tr>
+                            <td>
+                                Kontaktuppgif saknas .
+                            </td>
+                        </tr>
+                    </table>
+                    </EmptyDataTemplate>
+                    <InsertItemTemplate>
+                        <tr>
+                        <td>
+                            <asp:TextBox ID="Förnamn" runat="server" Text='<%# BindItem.FirstName %>' />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Efternamn" runat="server" Text='<%# BindItem.LastName %>' />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Emailadress" runat="server" Text='<%# BindItem.EmailAdress %>'/>
+                        </td>
+                        <td>
+                            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
+                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
+                        </td>
+                    </tr>
+                    </InsertItemTemplate>
+
+                    <EditItemTemplate>
+                    <tr>
+                        <td>
+                            <asp:TextBox ID="Förnamn" runat="server" Text='<%# BindItem.FirstName %>' />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Efternamn" runat="server" Text='<%# BindItem.LastName %>' />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="Emailadress" runat="server" Text='<%# BindItem.EmailAdress %>'/>
+                        </td>
+                        <td>
+                            <asp:LinkButton runat="server" CommandName="Update" Text="Spara" />
+                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" />
+                        </td>
+                    </tr>
+                </EditItemTemplate>
+                </asp:ListView>
+            </form>
+        </div>
 </body>
 </html>

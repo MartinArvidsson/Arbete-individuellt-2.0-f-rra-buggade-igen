@@ -11,12 +11,13 @@ namespace Aventyrliga_kontakter.DAL
 {
     public class ContactDAL
     {
-        // https://github.com/1dv406/kursmaterial/blob/master/Exempel/Kundkontakter%20(version%205%2C%20Flera%20sidor)/GeekCustomer/Model/DAL/CustomerDAL.cs
+        // https://github.com/1dv406/kursmaterial/tree/master/Exempel
+
         private static string _connectionString;
 
         static ContactDAL()
         {
-            _connectionString = WebConfigurationManager.ConnectionStrings["Sträng här"].ConnectionString;
+            _connectionString = WebConfigurationManager.ConnectionStrings["ContactConnectionString"].ConnectionString;
         }
 
         private static SqlConnection CreateConnection()
@@ -115,11 +116,11 @@ namespace Aventyrliga_kontakter.DAL
                     SqlCommand cmd = new SqlCommand("app.uspInsertContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@EmailAdress", sqlDbType.VarChar, 50).Value = contact.EmailAdress;
-                    cmd.Parameters.Add("@Förnamn", sqlDbType.VarChar, 50).Value = contact.FirstName;
-                    cmd.Parameters.Add("@Efternamn", sqlDbType.VarChar, 50).Value = contact.LastName;
+                    cmd.Parameters.Add("@EmailAdress", SqlDbType.VarChar, 50).Value = contact.EmailAdress;
+                    cmd.Parameters.Add("@Förnamn", SqlDbType.VarChar, 50).Value = contact.FirstName;
+                    cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 50).Value = contact.LastName;
 
-                    cmd.Parameters.Add("@ContactId", sqlDbType.Int, 5).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@ContactId", SqlDbType.Int, 5).Direction = ParameterDirection.Output;
 
                     conn.Open();
 
@@ -143,10 +144,10 @@ namespace Aventyrliga_kontakter.DAL
                     SqlCommand cmd = new SqlCommand("app.uspUpdateContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@ContactId", sqlDbType.Int, 4).Value = contact.ContactID;
-                    cmd.Parameters.Add("@EmailAdress", sqlDbType.VarChar, 50).Value = contact.EmailAdress;
-                    cmd.Parameters.Add("@Förnamn", sqlDbType.VarChar, 50).Value = contact.FirstName;
-                    cmd.Parameters.Add("@Efternamn", sqlDbType.VarChar, 50).Value = contact.LastName;
+                    cmd.Parameters.Add("@ContactId", SqlDbType.Int, 4).Value = contact.ContactID;
+                    cmd.Parameters.Add("@EmailAdress", SqlDbType.VarChar, 50).Value = contact.EmailAdress;
+                    cmd.Parameters.Add("@Förnamn", SqlDbType.VarChar, 50).Value = contact.FirstName;
+                    cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 50).Value = contact.LastName;
 
                     conn.Open();
 
@@ -154,7 +155,6 @@ namespace Aventyrliga_kontakter.DAL
                 }
                 catch
                 {
-                    // Kastar ett eget undantag om ett undantag kastas.
                     throw new ApplicationException("Fel i data åtkomstlagret .. ._.");
                 }
             }
@@ -168,7 +168,7 @@ namespace Aventyrliga_kontakter.DAL
                     SqlCommand cmd = new SqlCommand("app.uspDeleteContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@contactId", sqlDbType.Int, 4).Value = contactId;
+                    cmd.Parameters.Add("@contactId", SqlDbType.Int, 4).Value = contactId;
 
                     conn.Open();
 
@@ -179,6 +179,6 @@ namespace Aventyrliga_kontakter.DAL
                     throw new ApplicationException("Fel i dataåtkomstlagret ,___,");
                 }
             }
-        }
+        } 
     }
 }

@@ -28,7 +28,7 @@ namespace Aventyrliga_kontakter.BLL
 
         public IEnumerable<Contact> GetContacts()
         {
-            return ContactDAL.GetContactsById(contactId);
+            return ContactDAL.GetContactById(contactId);
         }
 
         public void SaveContact(Contact contact)
