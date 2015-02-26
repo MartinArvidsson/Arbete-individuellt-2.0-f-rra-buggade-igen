@@ -26,12 +26,17 @@ namespace Aventyrliga_kontakter.BLL
             return ContactDAL.GetContactById(contactId);
         }
 
-        public IEnumerable<Contact> GetContacts()
+        public IEnumerable<Contact> GetContactsPageWise(int maximumRows , int startRowIndex, out int totalRowCount)
         {
-            return ContactDAL.GetContactById(contactId);
+            return ContactDAL.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
         }
 
-        public void SaveContact(Contact contact)
+        public IEnumerable<Contact> GetContacts()
+        {
+            return ContactDAL.GetContacts();
+        }
+
+      /*  public void SaveContact(Contact contact)
         {
             ICollection<ValidationResult> validationResults;
             if(!contact.Validate(out validationResults))
@@ -48,6 +53,6 @@ namespace Aventyrliga_kontakter.BLL
             {
                 ContactDAL.UpdateContact(contact);
             }
-        }
+        }*/
     }
 }

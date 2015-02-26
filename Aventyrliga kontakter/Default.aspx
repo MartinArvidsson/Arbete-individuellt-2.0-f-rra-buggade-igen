@@ -17,7 +17,7 @@
 
 
                 <asp:ListView ID="ListView1" runat="server"
-                    ItemType="Aventyrliga kontakter.Model.Contact"
+                    ItemType="Aventyrliga_kontakter.BLL.Contact"
 
                     SelectMethod="ContactListView_GetData"
 
@@ -45,6 +45,15 @@
                             </tr>
                             <asp:PlaceHolder ID="Placeholder1" runat="server"/>
                         </table>
+                        <asp:DataPager ID="DataPager1" runat="server">
+                            <Fields>
+                                <asp:NextPreviousPagerField ShowFirstPageButton="True" FirstPageText=" << "
+                                    ShowNextPageButton="False" ShowPreviousPageButton="False"  />
+                                <asp:NumericPagerField />
+                                <asp:NextPreviousPagerField ShowLastPageButton="True" LastPageText=" >> "
+                                    ShowNextPageButton="False" ShowPreviousPageButton="False"  />
+                    </Fields>
+                        </asp:DataPager>
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>

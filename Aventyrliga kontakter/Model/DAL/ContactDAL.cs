@@ -68,6 +68,14 @@ namespace Aventyrliga_kontakter.DAL
             }
         }
 
+        public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
+        {
+            totalRowCount = 2000;
+
+            return GetContacts().Skip(startRowIndex).Take(maximumRows);
+ 
+        }
+
         public Contact GetContactById(int contactId)
         {
             using(SqlConnection conn = CreateConnection())
