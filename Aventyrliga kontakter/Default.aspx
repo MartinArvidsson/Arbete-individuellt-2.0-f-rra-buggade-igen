@@ -16,7 +16,7 @@
                 cssClass="ValidationSumErrors" />
 
 
-                <asp:ListView ID="ListView1" runat="server"
+                <asp:ListView ID="ContactListView" runat="server"
                     ItemType="Aventyrliga_kontakter.BLL.Contact"
 
                     SelectMethod="ContactListView_GetData"
@@ -43,7 +43,7 @@
                                     Epostadress
                                 </th>
                             </tr>
-                            <asp:PlaceHolder ID="Placeholder1" runat="server"/>
+                            <asp:PlaceHolder ID="ItemPlaceholder" runat="server"/>
                         </table>
                         <asp:DataPager ID="DataPager1" runat="server">
                             <Fields>

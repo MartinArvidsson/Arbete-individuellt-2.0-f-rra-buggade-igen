@@ -36,7 +36,7 @@ namespace Aventyrliga_kontakter.BLL
             return ContactDAL.GetContacts();
         }
 
-      /*  public void SaveContact(Contact contact)
+        public void SaveContact(Contact contact)
         {
             ICollection<ValidationResult> validationResults;
             if(!contact.Validate(out validationResults))
@@ -53,6 +53,6 @@ namespace Aventyrliga_kontakter.BLL
             {
                 ContactDAL.UpdateContact(contact);
             }
-        }*/
+        }
     }
 }

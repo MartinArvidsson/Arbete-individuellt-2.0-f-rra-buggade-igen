@@ -29,11 +29,11 @@ namespace Aventyrliga_kontakter.DAL
         {
             using(var conn= CreateConnection())
             {
-                try
-                {
+                //try
+                //{
                     var contacts = new List<Contact>(1000);
 
-                    var cmd = new SqlCommand("app.uspGetContacts", conn);
+                    var cmd = new SqlCommand("Person.uspGetContacts", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     conn.Open();
@@ -41,7 +41,7 @@ namespace Aventyrliga_kontakter.DAL
                     using(var reader = cmd.ExecuteReader())
                     {
                         var contactIdIndex = reader.GetOrdinal("contactID");
-                        var EmailAdressIndex = reader.GetOrdinal("EmailAdress");
+                        var EmailAdressIndex = reader.GetOrdinal("EmailAddress");
                         var FirstNameIndex = reader.GetOrdinal("FirstName");
                         var LastNameIndex = reader.GetOrdinal("LastName");
 
@@ -60,11 +60,11 @@ namespace Aventyrliga_kontakter.DAL
                     contacts.TrimExcess();
 
                     return contacts;
-                }
-                catch
-                {
-                    throw new ApplicationException("Fan, något gick fel när data hämtades från databasen");
-                }
+                //}
+                //catch
+                //{
+                //    throw new ApplicationException("Något gick fel när data hämtades från databasen");
+                //}
             }
         }
 
@@ -80,8 +80,8 @@ namespace Aventyrliga_kontakter.DAL
         {
             using(SqlConnection conn = CreateConnection())
             {
-                try
-                {
+                //try
+                //{
                     SqlCommand cmd = new SqlCommand("app.uspGetContacts", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -108,19 +108,19 @@ namespace Aventyrliga_kontakter.DAL
                         }
                     }
                     return null;
-                }
-                catch
-                {
-                    throw new ApplicationException("Fel i dataåtkomstlagret ;_;");
-                }
+               // }
+               // catch
+               // {
+               //    throw new ApplicationException("Något gick Fel i dataåtkomstlagret ;_;");
+               // }
             }
         }
         public void InsertContact(Contact contact)
         {
             using(SqlConnection conn = CreateConnection())
             {
-                try
-                {
+                //try
+                //{
                     SqlCommand cmd = new SqlCommand("app.uspInsertContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -135,11 +135,11 @@ namespace Aventyrliga_kontakter.DAL
                     cmd.ExecuteNonQuery();
 
                     contact.ContactID = (int)cmd.Parameters["@ContactId"].Value;
-                }
-                catch
-                {
-                    throw new ApplicationException("Fel i dataåtkomstlagret ;-;");
-                }
+                //}
+                //catch
+                //{
+                //    throw new ApplicationException("Något Fel i dataåtkomstlagret ;-;");
+                //}
             }
         }
 
@@ -147,8 +147,8 @@ namespace Aventyrliga_kontakter.DAL
         {
             using (SqlConnection conn = CreateConnection())
             {
-                try
-                {
+                //try
+                //{
                     SqlCommand cmd = new SqlCommand("app.uspUpdateContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -160,19 +160,19 @@ namespace Aventyrliga_kontakter.DAL
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
-                }
-                catch
-                {
-                    throw new ApplicationException("Fel i data åtkomstlagret .. ._.");
-                }
+                //}
+                //catch
+                //{
+                //    throw new ApplicationException("Något Fel i data åtkomstlagret .. ._.");
+                //}
             }
         }
         public void DeleteContact(int contactId)
         {
             using(SqlConnection conn = CreateConnection())
             {
-                try
-                {
+                //try
+                //{
                     SqlCommand cmd = new SqlCommand("app.uspDeleteContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -181,11 +181,11 @@ namespace Aventyrliga_kontakter.DAL
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
-                }
-                catch
-                {
-                    throw new ApplicationException("Fel i dataåtkomstlagret ,___,");
-                }
+                //}
+                //catch
+                //{
+                //    throw new ApplicationException("Något slags fel i dataåtkomstlagret ,___,");
+                //}
             }
         } 
     }
