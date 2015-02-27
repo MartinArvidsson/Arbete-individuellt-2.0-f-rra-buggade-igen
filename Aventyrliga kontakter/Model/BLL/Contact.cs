@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aventyrliga_kontakter.Model.BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace Aventyrliga_kontakter.BLL
 {
-    public class Contact
+    public class Contact : ValidationExtensions
     {
         public int ContactID { get; set; }
 

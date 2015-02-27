@@ -41,9 +41,9 @@ namespace Aventyrliga_kontakter.BLL
             ICollection<ValidationResult> validationResults;
             if(!contact.Validate(out validationResults))
             {
-                var ex = new ValidationExeption("Objektet klarade inte valideringen");
+                var ex = new ValidationException("Objektet klarade inte valideringen");
                 ex.Data.Add("ValidationResults", validationResults);
-                throw ex;
+                throw ex;   
             }
             if(contact.ContactID == 0)
             {

@@ -76,7 +76,7 @@
                          <table class="grid">
                         <tr>
                             <td>
-                                Kontaktuppgif saknas .
+                                Kontaktuppgift saknas .
                             </td>
                         </tr>
                     </table>
