@@ -19,7 +19,12 @@ namespace Aventyrliga_kontakter
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["ValidationSession"] != null)
+            {
+                ConfirmationLabel.Text = Session["ValidationSession"] as string;
 
+                Session["ValidationSession"] = null;
+            }
         }
 
         // The return type can be changed to IEnumerable, however to support
@@ -37,25 +42,30 @@ namespace Aventyrliga_kontakter
         {
             if (ModelState.IsValid)
             {
-                try
-                {
+                //try
+                //{
+                Session["ValidationSession"] = "Du har lagt till kontakten";
+                Response.Redirect("Default.aspx");
+
                     Service.SaveContact(contact);
-                }
-                catch (Exception ex) //Undantaget som kastas i Service.cs, Mer specifikt Service.SaveContact
-                {
-                    ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle läggas till.");
-                }
+                //}
+                //catch (Exception) //Undantaget som kastas i Service.cs, Mer specifikt Service.SaveContact
+                //{
+                //    ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle läggas till.");
+                //}
             }
         }
 
         
-        public void ContactListView_UpdateItem(int contactId)         {
-            try
-            {
+        public void ContactListView_UpdateItem(int contactId)
+        {
+            //try
+            //{
                 var contact = Service.GetContact(contactId);
                 if (contact == null)
                 {
                     
+
                     ModelState.AddModelError(String.Empty,
                         String.Format("Kunden med kundnummer {0} hittades inte.", contactId));
                     return;
@@ -63,25 +73,29 @@ namespace Aventyrliga_kontakter
 
                 if (TryUpdateModel(contact))
                 {
+                    Session["ValidationSession"] = "Du har Uppdaterat kontakten";
+                    Response.Redirect("Default.aspx");
                     Service.SaveContact(contact);
                 }
-            }
-            catch (Exception)
-            {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle uppdateras.");
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle uppdateras.");
+            //}
         }
 
-        public void ContactListView_DeleteItem(int customerId)
+        public void ContactListView_DeleteItem(int contactId)
         {
-            try
-            {
-                Service.DeleteContact(customerId);
-            }
-            catch (Exception )
-            {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle tas bort.");
-            }
+            //try
+            //{
+            Session["ValidationSession"] = "Du har tagit bort kontakten";
+            Response.Redirect("Default.aspx");
+                Service.DeleteContact(contactId);
+            //}
+            //catch (Exception )
+            //{
+            //    ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle tas bort.");
+            //}
         }
     }
 }

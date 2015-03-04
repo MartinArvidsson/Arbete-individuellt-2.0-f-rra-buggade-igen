@@ -70,9 +70,53 @@ namespace Aventyrliga_kontakter.DAL
 
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
-            totalRowCount = 2000;
-
-            return GetContacts().Skip(startRowIndex).Take(maximumRows);
+            using (SqlConnection conn = CreateConnection())
+            {
+                //try
+                //{
+                    List<Contact> contacts = new List<Contact>(maximumRows);
+                    
+                    SqlCommand cmd = new SqlCommand("Person.uspGetContactsPageWise", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    
+                    cmd.Parameters.Add("@Pageindex", SqlDbType.Int ,4).Value = startRowIndex / maximumRows+1;
+                    cmd.Parameters.Add("@PageSize", SqlDbType.Int,4).Value = maximumRows;
+                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+                    
+                    conn.Open();
+                    
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        var contactIdIndex = reader.GetOrdinal("ContactID");
+                        var EmailAdressIndex = reader.GetOrdinal("EmailAddress");
+                        var FirstNameIndex = reader.GetOrdinal("FirstName");
+                        var LastNameIndex = reader.GetOrdinal("LastName");
+                        
+                        while(reader.Read())
+                        {
+                            contacts.Add (new Contact
+                            {
+                                 ContactID = reader.GetInt32(contactIdIndex),
+                                 EmailAdress = reader.GetString(EmailAdressIndex),
+                                 FirstName = reader.GetString(FirstNameIndex),
+                                 LastName = reader.GetString(LastNameIndex),
+                            });
+                        }
+                    
+                    }
+                    
+                    totalRowCount = (int)cmd.Parameters["@RecordCount"].Value;
+                    contacts.TrimExcess();
+                    return contacts;
+                  
+                //}
+                //catch
+                //{
+                //    throw new ApplicationException("Något gick Fel i dataåtkomstlagret ;--;");
+                //}
+            }
+            //totalRowCount = 2000;
+            //return GetContacts().Skip(startRowIndex).Take(maximumRows);
  
         }
 
@@ -82,10 +126,10 @@ namespace Aventyrliga_kontakter.DAL
             {
                 //try
                 //{
-                    SqlCommand cmd = new SqlCommand("app.uspGetContacts", conn);
+                SqlCommand cmd = new SqlCommand("Person.uspGetContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@contactId", contactId);
+                    cmd.Parameters.AddWithValue("@ContactID", contactId);
 
                     conn.Open();
 
@@ -93,8 +137,8 @@ namespace Aventyrliga_kontakter.DAL
                     {
                         if(reader.Read())
                         {
-                           int contactIdIndex = reader.GetOrdinal("contactID");
-                           int EmailAdressIndex = reader.GetOrdinal("EmailAdress");
+                            int contactIdIndex = reader.GetOrdinal("ContactID");
+                           int EmailAdressIndex = reader.GetOrdinal("EmailAddress");
                            int FirstNameIndex = reader.GetOrdinal("FirstName");
                            int LastNameIndex = reader.GetOrdinal("LastName");
 
@@ -121,20 +165,20 @@ namespace Aventyrliga_kontakter.DAL
             {
                 //try
                 //{
-                    SqlCommand cmd = new SqlCommand("app.uspInsertContact", conn);
+                    SqlCommand cmd = new SqlCommand("Person.uspAddContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@EmailAdress", SqlDbType.VarChar, 50).Value = contact.EmailAdress;
-                    cmd.Parameters.Add("@Förnamn", SqlDbType.VarChar, 50).Value = contact.FirstName;
-                    cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 50).Value = contact.LastName;
+                    cmd.Parameters.Add("@FirstName", SqlDbType.VarChar, 50).Value = contact.FirstName;
+                    cmd.Parameters.Add("@LastName", SqlDbType.VarChar, 50).Value = contact.LastName;
+                    cmd.Parameters.Add("@EmailAddress", SqlDbType.VarChar, 50).Value = contact.EmailAdress;
 
-                    cmd.Parameters.Add("@ContactId", SqlDbType.Int, 5).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@ContactID", SqlDbType.Int, 5).Direction = ParameterDirection.Output;
 
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
 
-                    contact.ContactID = (int)cmd.Parameters["@ContactId"].Value;
+                    contact.ContactID = (int)cmd.Parameters["@ContactID"].Value;
                 //}
                 //catch
                 //{
@@ -149,13 +193,13 @@ namespace Aventyrliga_kontakter.DAL
             {
                 //try
                 //{
-                    SqlCommand cmd = new SqlCommand("app.uspUpdateContact", conn);
+                SqlCommand cmd = new SqlCommand("Person.uspUpdateContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@ContactId", SqlDbType.Int, 4).Value = contact.ContactID;
-                    cmd.Parameters.Add("@EmailAdress", SqlDbType.VarChar, 50).Value = contact.EmailAdress;
-                    cmd.Parameters.Add("@Förnamn", SqlDbType.VarChar, 50).Value = contact.FirstName;
-                    cmd.Parameters.Add("@Efternamn", SqlDbType.VarChar, 50).Value = contact.LastName;
+                    cmd.Parameters.Add("@EmailAddress", SqlDbType.VarChar, 50).Value = contact.EmailAdress;
+                    cmd.Parameters.Add("@FirstName", SqlDbType.VarChar, 50).Value = contact.FirstName;
+                    cmd.Parameters.Add("@LastName", SqlDbType.VarChar, 50).Value = contact.LastName;
 
                     conn.Open();
 
@@ -173,7 +217,7 @@ namespace Aventyrliga_kontakter.DAL
             {
                 //try
                 //{
-                    SqlCommand cmd = new SqlCommand("app.uspDeleteContact", conn);
+                    SqlCommand cmd = new SqlCommand("Person.uspRemoveContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@contactId", SqlDbType.Int, 4).Value = contactId;

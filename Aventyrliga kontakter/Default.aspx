@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Aventyrliga_kontakter.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Aventyrliga_kontakter.Default" ViewStateMode="Disabled"%>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,8 @@
                 <h1>
                     Kunder
                 </h1>
-                <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade ;_; Gör om, Gör rätt"
+                <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade"
                 cssClass="ValidationSumErrors" />
 
 
@@ -60,12 +61,15 @@
                             <td>
                                 <%#: Item.FirstName %>
                             </td>
+                            
                             <td>
                                 <%#: Item.LastName %>
                             </td>
+
                             <td>
                                 <%#: Item.EmailAdress %>
                             </td>
+
                             <td class="command">
                                 <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false"/>
                                 <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"/>
@@ -85,15 +89,18 @@
                         <tr>
                         <td>
                             <asp:TextBox ID="Förnamn" runat="server" Text='<%# BindItem.FirstName %>' />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="ej giltigt förnamn" ControlToValidate="Förnamn"></asp:RequiredFieldValidator>
                         </td>
                         <td>
                             <asp:TextBox ID="Efternamn" runat="server" Text='<%# BindItem.LastName %>' />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Ej giltigt efternamn" ControlToValidate="Efternamn"></asp:RequiredFieldValidator>
                         </td>
                         <td>
                             <asp:TextBox ID="Emailadress" runat="server" Text='<%# BindItem.EmailAdress %>'/>
+                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Ej giltig epost" ControlToValidate="Emailadress" ValidationExpression="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"></asp:RegularExpressionValidator>
                         </td>
                         <td>
-                            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
+                            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" CausesValidation="False" />
                             <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
                         </td>
                     </tr>
@@ -103,15 +110,39 @@
                     <tr>
                         <td>
                             <asp:TextBox ID="Förnamn" runat="server" Text='<%# BindItem.FirstName %>' />
+                            <asp:RequiredFieldValidator 
+                                ID="RequiredFieldValidator1" 
+                                runat="server" ErrorMessage="Ej giltigt förnamn" 
+                                ControlToValidate="Förnamn">
+                            </asp:RequiredFieldValidator>
                         </td>
                         <td>
                             <asp:TextBox ID="Efternamn" runat="server" Text='<%# BindItem.LastName %>' />
+                        <asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator2" 
+                            runat="server" 
+                            ErrorMessage="Ej giltigt efternamn" 
+                            ControlToValidate="Efternamn">
+                        </asp:RequiredFieldValidator>
                         </td>
                         <td>
                             <asp:TextBox ID="Emailadress" runat="server" Text='<%# BindItem.EmailAdress %>'/>
+                        <asp:RequiredFieldValidator 
+                            ID="RequiredFieldValidator3" 
+                            runat="server" 
+                            ErrorMessage="RequiredFieldValidator" 
+                            ControlToValidate="Emailadress">
+                        </asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator 
+                                ID="RegularExpressionValidator1" 
+                                runat="server" 
+                                ErrorMessage="Ej giltig epost" 
+                                ControlToValidate="Emailadress" 
+                                ValidationExpression="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                            </asp:RegularExpressionValidator>
                         </td>
                         <td>
-                            <asp:LinkButton runat="server" CommandName="Update" Text="Spara" />
+                            <asp:LinkButton runat="server" CommandName="Update" Text="Spara" CausesValidation="False"/>
                             <asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" />
                         </td>
                     </tr>
