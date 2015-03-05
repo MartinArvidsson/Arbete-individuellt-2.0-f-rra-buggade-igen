@@ -13,13 +13,12 @@
                 <h1>
                     Kunder
                 </h1>
-                <asp:PlaceHolder ID="MessagePlaceholder" Visible="false" runat="server">
-                    <div id="MessageBox">
+                <asp:PlaceHolder ID="MessagePlaceholder" runat="server">
+                    <div id="Label">
                         <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
                             <div id="CloseButton">
                                <label>X</label>
                             </div>
-                        <%--<button id="CloseButton" ></button>--%>
                     </div>
                 </asp:PlaceHolder>
 

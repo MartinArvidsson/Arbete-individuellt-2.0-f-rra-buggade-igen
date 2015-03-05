@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Model\BLL\Script.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
