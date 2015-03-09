@@ -1,0 +1,6 @@
+C:\Users\ma223ku\Desktop\ProjektASP\IndividuelltProjekt\obj\Debug\IndividuelltProjekt.csprojResolveAssemblyReference.cache
+C:\Users\ma223ku\Desktop\ProjektASP\IndividuelltProjekt\bin\IndividuelltProjekt.dll.config
+C:\Users\ma223ku\Desktop\ProjektASP\IndividuelltProjekt\bin\IndividuelltProjekt.dll
+C:\Users\ma223ku\Desktop\ProjektASP\IndividuelltProjekt\bin\IndividuelltProjekt.pdb
+C:\Users\ma223ku\Desktop\ProjektASP\IndividuelltProjekt\obj\Debug\IndividuelltProjekt.dll
+C:\Users\ma223ku\Desktop\ProjektASP\IndividuelltProjekt\obj\Debug\IndividuelltProjekt.pdb
