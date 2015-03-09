@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Masterpage.Master" AutoEventWireup="true" CodeBehind="Start.aspx.cs" Inherits="IndividuelltProjekt.Ticketregpages.Start" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade"
         cssClass="ValidationSumErrors" />
 
                 <asp:ListView ID="Transactionview" runat="server"
-                    ItemType="IndividuelltProjekt.BLL.Transaction"
+                    ItemType="IndividuelltProjekt.Model.BLL.Transaction"
 
                     SelectMethod="Transactionview_GetData"
 
@@ -50,4 +51,5 @@
                         </tr>
                     </table>
                     </EmptyDataTemplate>
+                    </asp:ListView>
 </asp:Content>
