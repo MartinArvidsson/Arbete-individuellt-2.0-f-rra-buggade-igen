@@ -82,5 +82,5 @@
                     </tr>
                 </EditItemTemplate>--%>
             </asp:ListView>  
-    <asp:Button ID="Button1" runat="server" Text="Starta registering" />                  
+    <asp:Button ID="Button1" runat="server" Text="Starta registering" OnClick="Button1_Click" />                  
 </asp:Content>
