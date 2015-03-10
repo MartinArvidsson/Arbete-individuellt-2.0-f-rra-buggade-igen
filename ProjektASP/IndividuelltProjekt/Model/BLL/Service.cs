@@ -32,12 +32,22 @@ namespace IndividuelltProjekt.Model.BLL
         {
             get { return _transactionDAL ?? (_transactionDAL = new TransactionDAL()); }
         }
-
+        //GREJER FÖR TRANSAKTION = CREATE READ DELETE
         public IEnumerable<Transaction> GetTransactions()
         {
             return TransactionDAL.GetTransactions();
         }
 
-        //GREJER FÖR TRANSAKTION = CREATE READ DELETE
+        public void SaveTransaction(Transaction transaction)
+        {
+            TransactionDAL.SaveTransaction(transaction);
+        }
+
+        public void DeleteTransaction(int TransactionID)
+        {
+            TransactionDAL.DeleteTransaction(TransactionID);
+        }
+
+
     }
 }

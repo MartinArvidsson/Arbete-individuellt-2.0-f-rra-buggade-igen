@@ -9,6 +9,8 @@
                     ItemType="IndividuelltProjekt.Model.BLL.Transaction"
 
                     SelectMethod="Transactionview_GetData"
+                    InsertMethod="Transactionview_InsertItem"
+                    DeleteMethod="Transactionview_DeleteItem"
 
                     DataKeyNames="TransactionID"
 
@@ -38,10 +40,10 @@
 
                             <td class="command">
                                 <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false" OnClientClick="return confirmation();"/>
-                                <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"/>
-                            </td>
+                            </td>                           
                         </tr>
                     </ItemTemplate>
+                    
                     <EmptyDataTemplate>
                          <table class="grid">
                         <tr>
@@ -51,5 +53,34 @@
                         </tr>
                     </table>
                     </EmptyDataTemplate>
-                    </asp:ListView>
+                <InsertItemTemplate>
+                <tr>
+                        <%--<td>
+                            <asp:TextBox ID="PersonID" runat="server" Text='<%# BindItem.PersonID %>' />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="BiljettID" runat="server" Text='<%# BindItem.BiljettID %>' />
+                        </td>
+                        <td>
+                            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
+                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
+                        </td>--%>
+                    </tr>
+                </InsertItemTemplate>
+                <%--<EditItemTemplate>
+                    <tr>
+                        <td>
+                            <asp:TextBox ID="PersonID" runat="server" Text='<%# BindItem.PersonID %>' />
+                        </td>
+                        <td>
+                            <asp:TextBox ID="BiljettID" runat="server" Text='<%# BindItem.BiljettID %>' />
+                        </td>
+                        <td>
+                            <asp:LinkButton runat="server" CommandName="Update" Text="Spara" />
+                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" />
+                        </td>
+                    </tr>
+                </EditItemTemplate>--%>
+            </asp:ListView>  
+    <asp:Button ID="Button1" runat="server" Text="Starta registering" />                  
 </asp:Content>

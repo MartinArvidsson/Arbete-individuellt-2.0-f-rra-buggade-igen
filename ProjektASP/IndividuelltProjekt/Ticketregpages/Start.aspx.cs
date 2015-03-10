@@ -10,15 +10,34 @@ namespace IndividuelltProjekt.Ticketregpages
 {
     public partial class Start : System.Web.UI.Page
     {
+        private Service _service;
+
+        private Service Service
+        { 
+            get 
+            { 
+                return _service ?? (_service = new Service()); 
+            } 
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        public IEnumerable<Transaction> ContactListView_GetData(int maximumRows, int startRowIndex, out int totalRowCount)
+        public IEnumerable<Transaction> Transactionview_GetData()
         {
-            return Service.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
-            // FIXA IMORGON <3
+            return Service.GetTransactions();
+            
         }
+
+        public void Transactionview_InsertItem(Transaction transaction)
+        {
+            Service.SaveTransaction(transaction);
+        }
+        public void Transactionview_DeleteItem(int TransactionID)
+        {
+            Service.DeleteTransaction(TransactionID);
+        }
+
     }
 }
