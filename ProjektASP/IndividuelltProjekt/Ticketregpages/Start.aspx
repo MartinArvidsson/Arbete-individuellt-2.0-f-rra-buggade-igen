@@ -22,6 +22,15 @@
                                     Person
                                 </th>
                                 <th>
+                                    Förnamn
+                                </th>
+                                <th>
+                                    Efternamn
+                                </th>
+                                <th>
+                                    Personnummer
+                                </th>
+                                <th>
                                     Biljettyp
                                 </th>
                             </tr>
@@ -32,6 +41,15 @@
                         <tr>                            
                             <td>
                                 <%#: Item.PersonID %>
+                            </td>
+                            <td>
+                                <%#: Item.Fnamn %>
+                            </td>
+                            <td>
+                                <%#: Item.Enamn %>
+                            </td>
+                            <td>
+                                <%#: Item.Fdatum %>
                             </td>
 
                             <td>
@@ -67,20 +85,6 @@
                         </td>--%>
                     </tr>
                 </InsertItemTemplate>
-                <%--<EditItemTemplate>
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="PersonID" runat="server" Text='<%# BindItem.PersonID %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="BiljettID" runat="server" Text='<%# BindItem.BiljettID %>' />
-                        </td>
-                        <td>
-                            <asp:LinkButton runat="server" CommandName="Update" Text="Spara" />
-                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" />
-                        </td>
-                    </tr>
-                </EditItemTemplate>--%>
             </asp:ListView>  
     <asp:Button ID="Button1" runat="server" Text="Starta registering" OnClick="Button1_Click" />                  
 </asp:Content>

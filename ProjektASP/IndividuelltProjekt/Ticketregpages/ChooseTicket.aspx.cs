@@ -28,5 +28,10 @@ namespace IndividuelltProjekt.Ticketregpages
         {
             return Service.GetTickets();
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("http://localhost:61141/Ticketregpages/Start.aspx");
+        }
     }
 }

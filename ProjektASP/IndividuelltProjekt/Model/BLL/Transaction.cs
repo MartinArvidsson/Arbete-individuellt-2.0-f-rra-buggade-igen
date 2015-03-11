@@ -21,5 +21,10 @@ namespace IndividuelltProjekt.Model.BLL
         //[Required(ErrorMessage = "Ett förnamn måste anges.")]
         //[StringLength(50, ErrorMessage = "Ett förnamn får max vara 50 tecken.")]
         public int BiljettID { get; set; }
+
+        public string Fnamn { get; set; }
+
+        public string Enamn { get; set; }
+        public string Fdatum { get; set; }
     }
 }

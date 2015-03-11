@@ -96,27 +96,27 @@ namespace IndividuelltProjekt.Model.DAL
         {
             using (SqlConnection conn = CreateConnection())
             {
-                try
-                {
+                //try
+                //{
                     SqlCommand cmd = new SqlCommand("AppSchema.usp_CreatePerson", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@Fnamn", SqlDbType.VarChar, 50).Value = person.Fnamn;
                     cmd.Parameters.Add("@Enamn", SqlDbType.VarChar, 50).Value = person.Enamn;
-                    cmd.Parameters.Add("@Fdatum", SqlDbType.VarChar, 15).Value = person.Fdatum;
+                    cmd.Parameters.Add("@Fdatum", SqlDbType.VarChar, 10).Value = person.Fdatum;
 
-                    cmd.Parameters.Add("@PersonID", SqlDbType.Int, 5).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@PersonID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
 
                     person.PersonID = (int)cmd.Parameters["@PersonID"].Value;
-                }
-                catch
-                {
-                    throw new ApplicationException("Något Fel i dataåtkomstlagret ;-;");
-                }
+                //}
+                //catch
+                //{
+                //    throw new ApplicationException("Något Fel i dataåtkomstlagret ;-;");
+                //}
             }
         }
 

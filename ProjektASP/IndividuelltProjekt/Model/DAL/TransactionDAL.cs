@@ -29,6 +29,9 @@ namespace IndividuelltProjekt.Model.DAL
                         var TransactionIDIndex = reader.GetOrdinal("TransactionID");
                         var PersonIDIndex = reader.GetOrdinal("PersonID");
                         var BiljettIDIndex = reader.GetOrdinal("BiljettID");
+                        var FnamnIndex = reader.GetOrdinal("Fnamn");
+                        var EnamnIndex = reader.GetOrdinal("Enamn");
+                        var FdatumIndex = reader.GetOrdinal("Fdatum");
 
                         while (reader.Read())
                         {
@@ -36,7 +39,10 @@ namespace IndividuelltProjekt.Model.DAL
                             {
                                 TransactionID = reader.GetInt32(TransactionIDIndex),
                                 PersonID = reader.GetInt32(PersonIDIndex),
-                                BiljettID = reader.GetInt32(BiljettIDIndex)
+                                BiljettID = reader.GetInt32(BiljettIDIndex),
+                                Fnamn = reader.GetString(FnamnIndex),
+                                Enamn = reader.GetString(EnamnIndex),
+                                Fdatum = reader.GetString(FdatumIndex),
                             });
                         }
                     }

@@ -21,7 +21,7 @@ namespace IndividuelltProjekt.Ticketregpages
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+     
         }
 
         public IEnumerable<Person> PersonListView_GetData()
@@ -66,5 +66,11 @@ namespace IndividuelltProjekt.Ticketregpages
             //    ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kunduppgiften skulle uppdateras.");
             //}
         }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("http://localhost:61141/Ticketregpages/ChooseTicket.aspx");
+        }
+
+
     }
 }

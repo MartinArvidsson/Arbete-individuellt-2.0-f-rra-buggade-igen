@@ -6,9 +6,9 @@
 
                     SelectMethod="TicketListView_GetData"
 
-                    DataKeyNames="PersonID"
+                    DataKeyNames="BiljettID"
 
-                    InsertItemPosition="FirstItem">
+                   >
                     <LayoutTemplate>
                         <table>
                             <tr>
@@ -32,17 +32,17 @@
                             </td>
                             
                             <td>
-                                <%#: Item.BiljettNamn %>
+                                <%#: Item.Biljettnamn %>
                             </td>
 
                             <td>
-                                <%#: Item.BiljettKostnad %>
+                                <%#: Item.kostnad %>
                             </td>
-
-                            <%--<td class="command">
-                                <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false" OnClientClick="return confirmation();"/>
-                                <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"/>
-                            </td>--%>
+                            <td class="Commands">
+                                <input type="radio" name="RadioTicket" value='<%#Eval("BiljettID") %>'/>
+                                <%-- Förbannat vad strul det ska vara med radiobutton i listview, Fråga om en bra lösning --%>
+                                <label>Välj Biljett för registering av faktura</label>
+                            </td>
                         </tr>
                     </ItemTemplate>
                     <EmptyDataTemplate>
@@ -54,61 +54,6 @@
                         </tr>
                     </table>
                     </EmptyDataTemplate>
-                   <%-- <InsertItemTemplate>
-                        <tr>
-                        <td>
-                            <asp:TextBox ID="Förnamn" runat="server" Text='<%# BindItem.Fnamn %>' Maxlength="50"/>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1a" runat="server" ErrorMessage="ej giltigt förnamn" ControlToValidate="Förnamn"></asp:RequiredFieldValidator>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="Efternamn" runat="server" Text='<%# BindItem.Enamn %>' MaxLength="50"/>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2a" runat="server" ErrorMessage="Ej giltigt efternamn" ControlToValidate="Efternamn"></asp:RequiredFieldValidator>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="Födelsedatum" runat="server" Text='<%# BindItem.Fdatum %>' MaxLength="15"/>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3a" runat="server" ErrorMessage="Ej giltigt efternamn" ControlToValidate="Födelsedatum"></asp:RequiredFieldValidator>  
-                        </td>
-                        <td>
-                            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" CausesValidation="False" />
-                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
-                        </td>
-                    </tr>
-                    </InsertItemTemplate>
-
-                    <EditItemTemplate>
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="Förnamn" runat="server" Text='<%# BindItem.Fnamn %>' MaxLength="50"/>
-                            <asp:RequiredFieldValidator 
-                                ID="RequiredFieldValidator1" 
-                                runat="server" ErrorMessage="Ej giltigt förnamn" 
-                                ControlToValidate="Förnamn">
-                            </asp:RequiredFieldValidator>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="Efternamn" runat="server" Text='<%# BindItem.Enamn %>' MaxLength="50"/>
-                        <asp:RequiredFieldValidator
-                            ID="RequiredFieldValidator2" 
-                            runat="server" 
-                            ErrorMessage="Ej giltigt efternamn" 
-                            ControlToValidate="Efternamn">
-                        </asp:RequiredFieldValidator>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="Födelsedatum" runat="server" Text='<%# BindItem.Fdatum %>' MaxLength="15"/>
-                        <asp:RequiredFieldValidator 
-                            ID="RequiredFieldValidator3" 
-                            runat="server" 
-                            ErrorMessage="RequiredFieldValidator" 
-                            ControlToValidate="Födelsedatum">
-                        </asp:RequiredFieldValidator>
-                        </td>
-                        <td>
-                            <asp:LinkButton runat="server" CommandName="Update" Text="Spara" CausesValidation="False"/>
-                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" />
-                        </td>
-                    </tr>
-                </EditItemTemplate>--%>
                 </asp:ListView>
-        <asp:Button ID="Button1" runat="server" Text="Fortsätt registering" />
+        <asp:Button ID="Button1" runat="server" Text="Avsluta registering" OnClick="Button1_Click" />
 </asp:Content>

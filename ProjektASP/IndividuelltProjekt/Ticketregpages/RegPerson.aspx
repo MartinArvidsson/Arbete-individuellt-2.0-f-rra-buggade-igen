@@ -51,6 +51,10 @@
                             <td class="command">
                                 <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false" OnClientClick="return confirmation();"/>
                                 <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"/>
+                                <input type="radio" name="RadioPerson" value='<%#Eval("PersonID") %>'/>
+                                <%-- Förbannat vad strul det ska vara med radiobutton i listview, Fråga om en bra lösning --%>
+                                <label>Välj person för registering av faktura</label>
+
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -67,19 +71,20 @@
                         <tr>
                         <td>
                             <asp:TextBox ID="Förnamn" runat="server" Text='<%# BindItem.Fnamn %>' Maxlength="50"/>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1a" runat="server" ErrorMessage="ej giltigt förnamn" ControlToValidate="Förnamn"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1a" runat="server" ErrorMessage="ej giltigt förnamn" ControlToValidate="Förnamn" ValidationGroup="AddPerson"></asp:RequiredFieldValidator>
                         </td>
                         <td>
                             <asp:TextBox ID="Efternamn" runat="server" Text='<%# BindItem.Enamn %>' MaxLength="50"/>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2a" runat="server" ErrorMessage="Ej giltigt efternamn" ControlToValidate="Efternamn"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2a" runat="server" ErrorMessage="Ej giltigt efternamn" ControlToValidate="Efternamn" ValidationGroup="AddPerson"></asp:RequiredFieldValidator>
                         </td>
                         <td>
-                            <asp:TextBox ID="Födelsedatum" runat="server" Text='<%# BindItem.Fdatum %>' MaxLength="15"/>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3a" runat="server" ErrorMessage="Ej giltigt efternamn" ControlToValidate="Födelsedatum"></asp:RequiredFieldValidator>  
+                            <asp:TextBox ID="Födelsedatum" runat="server" Text='<%# BindItem.Fdatum %>' MaxLength="10"/>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3a" runat="server" ErrorMessage="Ej giltigt efternamn" ControlToValidate="Födelsedatum" ValidationGroup="AddPerson"></asp:RequiredFieldValidator>  
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="RegularExpressionValidator" ValidationExpression="^(19|20)\d\d([- /.])(0[1-9]|1[012])\2(0[1-9]|[12][0-9]|3[01])$" ControlToValidate="Födelsedatum"></asp:RegularExpressionValidator>
                         </td>
                         <td>
-                            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" CausesValidation="False" />
-                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
+                            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" ValidationGroup="AddPerson" />
+                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false"  />
                         </td>
                     </tr>
                     </InsertItemTemplate>
@@ -91,7 +96,8 @@
                             <asp:RequiredFieldValidator 
                                 ID="RequiredFieldValidator1" 
                                 runat="server" ErrorMessage="Ej giltigt förnamn" 
-                                ControlToValidate="Förnamn">
+                                ControlToValidate="Förnamn"
+                                ValidationGroup="AddPerson">
                             </asp:RequiredFieldValidator>
                         </td>
                         <td>
@@ -100,7 +106,8 @@
                             ID="RequiredFieldValidator2" 
                             runat="server" 
                             ErrorMessage="Ej giltigt efternamn" 
-                            ControlToValidate="Efternamn">
+                            ControlToValidate="Efternamn"
+                            ValidationGroup="AddPerson">
                         </asp:RequiredFieldValidator>
                         </td>
                         <td>
@@ -109,16 +116,17 @@
                             ID="RequiredFieldValidator3" 
                             runat="server" 
                             ErrorMessage="RequiredFieldValidator" 
-                            ControlToValidate="Födelsedatum">
+                            ControlToValidate="Födelsedatum"
+                            ValidationGroup="AddPerson">
                         </asp:RequiredFieldValidator>
                         </td>
                         <td>
-                            <asp:LinkButton runat="server" CommandName="Update" Text="Spara" CausesValidation="False"/>
+                            <asp:LinkButton runat="server" CommandName="Update" Text="Spara"  CausesValidation="false"/>
                             <asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" />
                         </td>
                     </tr>
                 </EditItemTemplate>
                 </asp:ListView>
-        <asp:Button ID="Button1" runat="server" Text="Fortsätt registering" />                  
+        <asp:Button ID="Button1" runat="server" Text="Fortsätt registering" OnClick="Button1_Click" ValidationGroup="ChoosePerson" />                  
 </asp:Content>
 
