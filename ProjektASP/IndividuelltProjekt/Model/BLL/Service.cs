@@ -8,6 +8,7 @@ namespace IndividuelltProjekt.Model.BLL
 {
     public class Service
     {
+        //GREJER FÖR PERSON = CREATE READ UPDATE DELETE
         private PersonDAL _personDAL;
 
         private PersonDAL PersonDAL
@@ -15,7 +16,7 @@ namespace IndividuelltProjekt.Model.BLL
             get { return _personDAL ?? (_personDAL = new PersonDAL()); }
         }
 
-        //GREJER FÖR PERSON = CREATE READ UPDATE DELETE
+        
         //<-- hämta alla
         public IEnumerable<Person> GetPersons()
         {
@@ -47,64 +48,30 @@ namespace IndividuelltProjekt.Model.BLL
         {
             return PersonDAL.GetSpecifikPerson(personID);
         }
-
+        
+        
+        //GREJER FÖR BILJETT
         private TicketDAL _ticketDAL;
 
         private TicketDAL TicketDAL
         {
             get { return _ticketDAL ?? (_ticketDAL = new TicketDAL()); }
         }
+        //READ
+        public IEnumerable<Ticket> GetTickets()
+        {
+            return TicketDAL.GetTickets();
+        }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //GREJER FÖR BILJETT = READ
-
+        //GREJER FÖR TRANSAKTION = CREATE READ DELETE
         private TransactionDAL _transactionDAL;
 
         private TransactionDAL TransactionDAL
         {
             get { return _transactionDAL ?? (_transactionDAL = new TransactionDAL()); }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //GREJER FÖR TRANSAKTION = CREATE READ DELETE
+     
         public IEnumerable<Transaction> GetTransactions()
         {
             return TransactionDAL.GetTransactions();

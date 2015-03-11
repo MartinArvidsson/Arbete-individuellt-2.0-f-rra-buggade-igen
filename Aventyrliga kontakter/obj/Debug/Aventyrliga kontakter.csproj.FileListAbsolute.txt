@@ -1,6 +1,0 @@
-C:\Users\ma223ku\Desktop\Aventyrliga kontakter\Aventyrliga kontakter\obj\Debug\Aventyrliga kontakter.csprojResolveAssemblyReference.cache
-C:\Users\ma223ku\Desktop\Aventyrliga kontakter\Aventyrliga kontakter\bin\Aventyrliga kontakter.dll.config
-C:\Users\ma223ku\Desktop\Aventyrliga kontakter\Aventyrliga kontakter\bin\Aventyrliga kontakter.dll
-C:\Users\ma223ku\Desktop\Aventyrliga kontakter\Aventyrliga kontakter\bin\Aventyrliga kontakter.pdb
-C:\Users\ma223ku\Desktop\Aventyrliga kontakter\Aventyrliga kontakter\obj\Debug\Aventyrliga kontakter.dll
-C:\Users\ma223ku\Desktop\Aventyrliga kontakter\Aventyrliga kontakter\obj\Debug\Aventyrliga kontakter.pdb
