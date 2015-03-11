@@ -57,8 +57,8 @@ namespace IndividuelltProjekt.Model.DAL
         {
             using (SqlConnection conn = CreateConnection())
             {
-                //try
-                //{
+                try
+                {
                     SqlCommand cmd = new SqlCommand("AppSchema.usp_GetSpecifikPerson", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -85,19 +85,19 @@ namespace IndividuelltProjekt.Model.DAL
                         }
                     }
                     return null;
-                //}
-                //catch
-                //{
-                //    throw new ApplicationException("Något gick Fel i dataåtkomstlagret ;_;");
-                //}
+                }
+                catch
+                {
+                    throw new ApplicationException("Något gick Fel i dataåtkomstlagret ;_;");
+                }
             }
         }
         public void SavePerson(Person person)
         {
             using (SqlConnection conn = CreateConnection())
             {
-                //try
-                //{
+                try
+                {
                     SqlCommand cmd = new SqlCommand("AppSchema.usp_CreatePerson", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -112,11 +112,11 @@ namespace IndividuelltProjekt.Model.DAL
                     cmd.ExecuteNonQuery();
 
                     person.PersonID = (int)cmd.Parameters["@PersonID"].Value;
-                //}
-                //catch
-                //{
-                //    throw new ApplicationException("Något Fel i dataåtkomstlagret ;-;");
-                //}
+                }
+                catch
+                {
+                    throw new ApplicationException("Något Fel i dataåtkomstlagret ;-;");
+                }
             }
         }
 
@@ -124,8 +124,8 @@ namespace IndividuelltProjekt.Model.DAL
         {
             using (SqlConnection conn = CreateConnection())
             {
-                //try
-                //{
+                try
+                {
                     SqlCommand cmd = new SqlCommand("AppSchema.usp_UpdatePerson", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -137,11 +137,11 @@ namespace IndividuelltProjekt.Model.DAL
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
-                //}
-                //catch
-                //{
-                //    throw new ApplicationException("Något Fel i data åtkomstlagret .. ._.");
-                //}
+                }
+                catch
+                {
+                    throw new ApplicationException("Något Fel i data åtkomstlagret .. ._.");
+                }
             }
         }
         public void DeletePerson(int personID)

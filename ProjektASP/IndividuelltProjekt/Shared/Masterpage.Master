@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
         <script src="Scripts/DeleteScript.js"></script>
+        <script src="Scripts/Close.js"></script>
     <title></title>
     <asp:ContentPlaceHolder ID="Head" runat="server">
     </asp:ContentPlaceHolder>
@@ -13,6 +14,14 @@
     <form id="form1" runat="server">
     <div>
         <h1>Min masterpage temptext</h1>
+        <asp:PlaceHolder ID="MessagePlaceholder" Visible="false" runat="server">
+                    <div id="MessageBox">
+                        <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
+                            <div id="CloseButton">
+                               <label>X</label>
+                            </div>
+                    </div>
+                </asp:PlaceHolder>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>

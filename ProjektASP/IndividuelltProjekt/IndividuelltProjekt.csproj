@@ -57,6 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Design\Style.css" />
+    <Content Include="Scripts\Close.js" />
     <Content Include="Scripts\DeleteScript.js" />
     <Content Include="Shared\Masterpage.Master" />
     <None Include="Web.Debug.config">
@@ -77,6 +79,7 @@
     <Compile Include="Model\BLL\Service.cs" />
     <Compile Include="Model\BLL\Ticket.cs" />
     <Compile Include="Model\BLL\Transaction.cs" />
+    <Compile Include="Model\BLL\ValidatonExtensions.cs" />
     <Compile Include="Model\DAL\DALBase.cs" />
     <Compile Include="Model\DAL\PersonDAL.cs" />
     <Compile Include="Model\DAL\TicketDAL.cs" />
@@ -111,7 +114,9 @@
       <DependentUpon>Start.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Model\NewFolder1\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
