@@ -4,8 +4,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-        <script src="Scripts/DeleteScript.js"></script>
-        <script src="Scripts/Close.js"></script>
+    <script src="../Scripts/Close.js"></script>
+    <script src="../Scripts/ConfirmDelete.js"></script>
     <title></title>
     <asp:ContentPlaceHolder ID="Head" runat="server">
     </asp:ContentPlaceHolder>

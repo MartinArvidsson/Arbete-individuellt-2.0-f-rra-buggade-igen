@@ -5,7 +5,6 @@
                     ItemType="IndividuelltProjekt.Model.BLL.Ticket"
 
                     SelectMethod="TicketListView_GetData"
-
                     DataKeyNames="BiljettID"
 
                    >
@@ -20,6 +19,9 @@
                                 </th>
                                 <th>
                                     Kostnad
+                                </th>
+                                <th>
+                                    Välj Biljett för registering av faktura för att komplettera den valda personen
                                 </th>
                             </tr>
                             <asp:PlaceHolder ID="ItemPlaceholder" runat="server"/>
@@ -39,9 +41,11 @@
                                 <%#: Item.kostnad %>
                             </td>
                             <td class="Commands">
-                                <input type="radio" name="RadioTicket" value='<%#Eval("BiljettID") %>'/>
-                                <%-- Förbannat vad strul det ska vara med radiobutton i listview, Fråga om en bra lösning --%>
-                                <label>Välj Biljett för registering av faktura</label>
+                                <asp:LinkButton runat="server" CommandArgument='<%#:Item.BiljettID %>' OnClick="TicketListView_AddFaktura" Text="Välj för fakturaregistering" CausesValidation="false"/>
+                                
+                                <%--<input type="radio" name="RadioTicket" checked="checked" value='<%#Eval("BiljettID") %>'/>--%>
+                                <%-- Förbannat vad strul det ska vara med radiobutton i listview, Fråga om en ev. bättre lösning --%>
+                                
                             </td>
                         </tr>
                     </ItemTemplate>
@@ -49,11 +53,10 @@
                          <table class="grid">
                         <tr>
                             <td>
-                                Kontaktuppgift saknas .
+                                Biljett saknas .
                             </td>
                         </tr>
                     </table>
                     </EmptyDataTemplate>
                 </asp:ListView>
-        <asp:Button ID="Button1" runat="server" Text="Avsluta registering" OnClick="Button1_Click" />
 </asp:Content>

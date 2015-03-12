@@ -57,9 +57,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Design\Style.css" />
+    <Content Include="Design\Base.css" />
+    <Content Include="Global.asax" />
     <Content Include="Scripts\Close.js" />
-    <Content Include="Scripts\DeleteScript.js" />
+    <Content Include="Scripts\ConfirmDelete.js" />
     <Content Include="Shared\Masterpage.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -75,6 +76,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Model\BLL\Person.cs" />
     <Compile Include="Model\BLL\Service.cs" />
     <Compile Include="Model\BLL\Ticket.cs" />
@@ -114,9 +119,7 @@
       <DependentUpon>Start.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

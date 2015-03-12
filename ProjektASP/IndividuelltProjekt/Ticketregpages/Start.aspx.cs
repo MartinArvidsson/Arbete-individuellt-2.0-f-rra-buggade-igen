@@ -22,7 +22,10 @@ namespace IndividuelltProjekt.Ticketregpages
         {
             if (Session["ValidationSession"] != null)
             {
-                MessagePlaceholder.Visible = true;
+                var messageplaceholder = Master.FindControl("MessagePlaceholderText") as PlaceHolder;
+                messageplaceholder.Visible = true;
+
+                var ConfirmationLabel = Master.FindControl("ConfirmationLabelText") as Label;
                 ConfirmationLabel.Text = Session["ValidationSession"] as string;
 
                 Session["ValidationSession"] = null;
@@ -42,7 +45,7 @@ namespace IndividuelltProjekt.Ticketregpages
             }
             catch (Exception)
             {
-                
+
                 ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
             }
         }

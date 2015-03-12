@@ -13,5 +13,16 @@ namespace IndividuelltProjekt.Shared
         {
 
         }
+        public PlaceHolder MessagePlaceholderText
+        {
+            get{ return MessagePlaceholder;}
+            set{ MessagePlaceholder = value;}
+        }
+
+        public string ConfirmationLabelText
+        {
+            get { return ConfirmationLabel.Text; }
+            set { ConfirmationLabel.Text = value;}
+        }
     }
 }

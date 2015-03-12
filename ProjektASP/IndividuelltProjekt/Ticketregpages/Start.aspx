@@ -71,9 +71,9 @@
                         </tr>
                     </table>
                     </EmptyDataTemplate>
-                <InsertItemTemplate>
+                <%--<InsertItemTemplate>
                 <tr>
-                        <%--<td>
+                        <td>
                             <asp:TextBox ID="PersonID" runat="server" Text='<%# BindItem.PersonID %>' />
                         </td>
                         <td>
@@ -81,10 +81,9 @@
                         </td>
                         <td>
                             <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
-                            <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
-                        </td>--%>
+                        </td>
                     </tr>
-                </InsertItemTemplate>
+                </InsertItemTemplate>--%>
             </asp:ListView>  
     <asp:Button ID="Button1" runat="server" Text="Starta registering" OnClick="Button1_Click" />                  
 </asp:Content>

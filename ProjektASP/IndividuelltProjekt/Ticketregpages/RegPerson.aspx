@@ -4,7 +4,7 @@
                 cssClass="ValidationSumErrors" />
 
 
-                <asp:ListView ID="ContactListView" runat="server"
+                <asp:ListView ID="PersonListView" runat="server"
                     ItemType="IndividuelltProjekt.Model.BLL.Person"
 
                     SelectMethod="PersonListView_GetData"
@@ -30,6 +30,9 @@
                                 <th>
                                     Födelsedatum
                                 </th>
+                                <th>
+                                    Välj person för registering av faktura
+                                </th>
                             </tr>
                             <asp:PlaceHolder ID="ItemPlaceholder" runat="server"/>
                         </table>
@@ -51,9 +54,11 @@
                             <td class="command">
                                 <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false" OnClientClick="return confirmation();"/>
                                 <asp:LinkButton runat="server" CommandName="Edit" Text="Redigera" CausesValidation="false"/>
-                                <input type="radio" name="RadioPerson" value='<%#Eval("PersonID") %>'/>
+                                <asp:LinkButton runat="server" CommandArgument='<%#:Item.PersonID %>' OnClick="PersonListView_AddFaktura" Text="Välj för fakturaregistering" CausesValidation="false"/>
+                                
+                                <%--<input type="radio" name="RadioPerson" checked="checked" value='<%#Eval("PersonID") %>'/>--%>
                                 <%-- Förbannat vad strul det ska vara med radiobutton i listview, Fråga om en bra lösning --%>
-                                <label>Välj person för registering av faktura</label>
+                
 
                             </td>
                         </tr>
@@ -62,7 +67,7 @@
                          <table class="grid">
                         <tr>
                             <td>
-                                Kontaktuppgift saknas .
+                                Personuppgifter saknas .
                             </td>
                         </tr>
                     </table>
@@ -126,7 +131,6 @@
                         </td>
                     </tr>
                 </EditItemTemplate>
-                </asp:ListView>
-        <asp:Button ID="Button1" runat="server" Text="Fortsätt registering" OnClick="Button1_Click" ValidationGroup="ChoosePerson" />                  
+                </asp:ListView>               
 </asp:Content>
 

@@ -21,7 +21,18 @@ namespace IndividuelltProjekt.Ticketregpages
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["ValidationSession"] != null)
+            {
+                var messageplaceholder = Master.FindControl("MessagePlaceholderText") as PlaceHolder;
+                messageplaceholder.Visible = true;
 
+                var ConfirmationLabel = Master.FindControl("ConfirmationLabelText") as Label;
+                ConfirmationLabel.Text = Session["ValidationSession"] as string;
+
+                Session["ValidationSession"] = null;
+
+
+            }
         }
 
         public IEnumerable<Ticket>TicketListView_GetData()
@@ -29,9 +40,28 @@ namespace IndividuelltProjekt.Ticketregpages
             return Service.GetTickets();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        public void TicketListView_AddFaktura(object sender, EventArgs e)
         {
-            Response.Redirect("http://localhost:61141/Ticketregpages/Start.aspx");
+            try
+            {
+            LinkButton btn = (LinkButton)(sender);
+                 string BiljettID = btn.CommandArgument;
+                    Response.RedirectToRoute("Biljett", new { id2 = BiljettID });
+
+                    //string Tempid1 = Request.QueryString["Person{0}"];
+                    //string Tempid2 = Request.QueryString["Biljett{0}"];
+
+                    //Tempid1.Remove(0, 5);
+                    //Tempid2.Remove(0, 6);
+
+                    Response.RedirectToRoute("Start");
+            
+            Session["ValidationSession"] = string.Format("Du Valde Biljett nummer:{0} för registrering, Registeringen lyckades!", BiljettID);
+            }
+            catch(Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då Fakturan skulle skapas.");
+            }
         }
     }
 }

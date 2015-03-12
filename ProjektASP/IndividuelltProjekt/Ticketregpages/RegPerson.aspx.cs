@@ -23,10 +23,15 @@ namespace IndividuelltProjekt.Ticketregpages
         {
             if (Session["ValidationSession"] != null)
             {
-                MessagePlaceholder.Visible = true;
+                var messageplaceholder = Master.FindControl("MessagePlaceholderText") as PlaceHolder;
+                messageplaceholder.Visible = true;
+
+                var ConfirmationLabel = Master.FindControl("ConfirmationLabelText") as Label;
                 ConfirmationLabel.Text = Session["ValidationSession"] as string;
 
                 Session["ValidationSession"] = null;
+
+                
             }
         }
 
@@ -87,11 +92,23 @@ namespace IndividuelltProjekt.Ticketregpages
                 ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då Personuppgiften skulle uppdateras.");
             }
         }
-        protected void Button1_Click(object sender, EventArgs e)
+
+
+        public void PersonListView_AddFaktura(object sender, EventArgs e)
         {
-            Response.Redirect("http://localhost:61141/Ticketregpages/ChooseTicket.aspx");
+            //try
+            //{
+                LinkButton btn =(LinkButton)(sender);
+                string personID = btn.CommandArgument;
+                
+                Response.RedirectToRoute("Person", new { id = personID});
+                Session["ValidationSession"] = string.Format("Du har valt person nummer:{0} för registrering, Välj biljett!",personID);
+
+            //}
+            //catch(Exception)
+            //{
+            //    ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då Fakturan skulle skapas.");
+            //}
         }
-
-
     }
 }
