@@ -8,15 +8,15 @@ using System.Web.UI.WebControls;
 
 namespace IndividuelltProjekt.Ticketregpages
 {
-    public partial class Start : System.Web.UI.Page
+    public partial class FinishReg : System.Web.UI.Page
     {
         private Service _service;
         private Service Service
-        { 
-            get 
-            { 
-                return _service ?? (_service = new Service()); 
-            } 
+        {
+            get
+            {
+                return _service ?? (_service = new Service());
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,11 +31,6 @@ namespace IndividuelltProjekt.Ticketregpages
                 Session["ValidationSession"] = null;
             }
         }
-        public IEnumerable<Transaction> Transactionview_GetData()
-        {
-            return Service.GetTransactions();
-            
-        }
         public void Transactionview_InsertItem(Transaction transaction)
         {
             try
@@ -48,23 +43,6 @@ namespace IndividuelltProjekt.Ticketregpages
 
                 ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
             }
-        }
-        public void Transactionview_DeleteItem(int TransactionID)
-        {
-            try
-            {
-                Service.DeleteTransaction(TransactionID);
-                Session["ValidationSession"] = "Du har tagit bort Transaktionen";
-            }
-            catch (Exception)
-            {
-
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då Transaktionen skulle Tas bort.");
-            }
-        }
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("http://localhost:61141/Ticketregpages/RegPerson.aspx");
         }
     }
 }

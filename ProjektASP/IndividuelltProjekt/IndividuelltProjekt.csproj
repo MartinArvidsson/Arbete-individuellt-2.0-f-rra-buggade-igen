@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ticketregpages\ChooseTicket.aspx" />
+    <Content Include="Ticketregpages\FinishReg.aspx" />
     <Content Include="Ticketregpages\RegPerson.aspx" />
     <Content Include="Ticketregpages\Start.aspx" />
     <Content Include="Web.config" />
@@ -103,6 +104,13 @@
     </Compile>
     <Compile Include="Ticketregpages\ChooseTicket.aspx.designer.cs">
       <DependentUpon>ChooseTicket.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ticketregpages\FinishReg.aspx.cs">
+      <DependentUpon>FinishReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ticketregpages\FinishReg.aspx.designer.cs">
+      <DependentUpon>FinishReg.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ticketregpages\RegPerson.aspx.cs">
       <DependentUpon>RegPerson.aspx</DependentUpon>

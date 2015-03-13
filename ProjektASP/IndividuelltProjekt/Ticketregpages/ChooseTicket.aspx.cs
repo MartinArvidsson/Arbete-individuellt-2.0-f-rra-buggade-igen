@@ -23,11 +23,11 @@ namespace IndividuelltProjekt.Ticketregpages
         {
             if (Session["ValidationSession"] != null)
             {
-                var messageplaceholder = Master.FindControl("MessagePlaceholderText") as PlaceHolder;
-                messageplaceholder.Visible = true;
+                //var messageplaceholder = Master.FindControl("MessagePlaceholderText") as PlaceHolder;
+                //messageplaceholder.Visible = true;
 
-                var ConfirmationLabel = Master.FindControl("ConfirmationLabelText") as Label;
-                ConfirmationLabel.Text = Session["ValidationSession"] as string;
+                //var ConfirmationLabel = Master.FindControl("ConfirmationLabelText") as Label;
+                //ConfirmationLabel.Text = Session["ValidationSession"] as string;
 
                 Session["ValidationSession"] = null;
 
@@ -48,13 +48,7 @@ namespace IndividuelltProjekt.Ticketregpages
                  string BiljettID = btn.CommandArgument;
                     Response.RedirectToRoute("Biljett", new { id2 = BiljettID });
 
-                    //string Tempid1 = Request.QueryString["Person{0}"];
-                    //string Tempid2 = Request.QueryString["Biljett{0}"];
-
-                    //Tempid1.Remove(0, 5);
-                    //Tempid2.Remove(0, 6);
-
-                    Response.RedirectToRoute("Start");
+                    //Response.RedirectToRoute("Start");
             
             Session["ValidationSession"] = string.Format("Du Valde Biljett nummer:{0} för registrering, Registeringen lyckades!", BiljettID);
             }
