@@ -48,7 +48,7 @@ namespace IndividuelltProjekt.Ticketregpages
                  string BiljettID = btn.CommandArgument;
                     Response.RedirectToRoute("Biljett", new { id2 = BiljettID });
 
-                    //Response.RedirectToRoute("Start");
+                    Response.RedirectToRoute("FinishReg");
             
             Session["ValidationSession"] = string.Format("Du Valde Biljett nummer:{0} för registrering, Registeringen lyckades!", BiljettID);
             }

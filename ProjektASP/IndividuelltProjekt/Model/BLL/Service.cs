@@ -62,7 +62,11 @@ namespace IndividuelltProjekt.Model.BLL
         {
             return TicketDAL.GetTickets();
         }
-
+        //Read Specifik
+        public Ticket GetTicket(int BiljettID)
+        {
+            return TicketDAL.GetSpecifikTicket(BiljettID);
+        }
 
         //GREJER FÖR TRANSAKTION = CREATE READ DELETE
         private TransactionDAL _transactionDAL;
@@ -86,5 +90,19 @@ namespace IndividuelltProjekt.Model.BLL
         {
             TransactionDAL.DeleteTransaction(TransactionID);
         }
+
+
+
+        //För FinishReg
+
+        //public FinishRegistration FinishRegGetTicket(int BiljettID)
+        //{
+        //    return FinishRegDAL.GetSpecifikTicket(BiljettID);
+        //}
+
+        //public FinishRegistration FinishRegGetPerson(int personID)
+        //{
+        //    return FinishRegDAL.GetSpecifikPerson(personID);
+        //}
     }
 }

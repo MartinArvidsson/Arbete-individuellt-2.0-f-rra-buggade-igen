@@ -6,7 +6,7 @@
 
                 <asp:ListView ID="PersonListView" runat="server"
                     ItemType="IndividuelltProjekt.Model.BLL.Person"
-
+                    
                     SelectMethod="PersonListView_GetData"
 
                     InsertMethod="PersonListView_InsertItem"

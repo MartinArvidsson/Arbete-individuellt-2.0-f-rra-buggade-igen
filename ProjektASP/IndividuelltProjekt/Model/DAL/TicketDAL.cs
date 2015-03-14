@@ -50,5 +50,42 @@ namespace IndividuelltProjekt.Model.DAL
                 }
             }
         }
+        public Ticket GetSpecifikTicket(int BiljettID)
+        {
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("AppSchema.GetSpecifikTicket", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@BiljettID", BiljettID);
+
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var TicketID = reader.GetOrdinal("BiljettID");
+                            var TicketNamn = reader.GetOrdinal("Biljettnamn");
+                            var TicketCost = reader.GetOrdinal("Kostnad");
+
+                            return new Ticket
+                            {
+                                BiljettID = reader.GetInt32(TicketID),
+                                Biljettnamn = reader.GetString(TicketNamn),
+                                kostnad = reader.GetDecimal(TicketCost)
+                            };
+                        }
+                    }
+                    return null;
+                }
+                catch
+                {
+                    throw new ApplicationException("Något gick Fel i dataåtkomstlagret ;_;");
+                }
+            }
+        }
     }
 }

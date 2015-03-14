@@ -14,7 +14,11 @@ namespace IndividuelltProjekt.App_Start
 
             routes.MapPageRoute("Biljett", "Start/Person/BiljettReg/{id}/{id2}", "~/Ticketregpages/ChooseTicket.aspx");
 
+            routes.MapPageRoute("FinishReg", "Finishreg/{id}/{id2}", "~/Ticketregpages/FinishReg.aspx");
+            
             routes.MapPageRoute("Start", "Start/", "~/Ticketregpages/Start.aspx");
+
+            
         }
     }
 }

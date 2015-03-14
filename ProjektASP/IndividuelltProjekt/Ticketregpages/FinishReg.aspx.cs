@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -31,6 +32,21 @@ namespace IndividuelltProjekt.Ticketregpages
                 Session["ValidationSession"] = null;
             }
         }
+
+        public void Transactionview_GetData([RouteData] int id,[RouteData] int id2)
+        {
+            //return Service.FinishRegGetPerson(id),Service.FinishRegGetTicket(id2);
+            //return Service.FinishRegGetTicket(id2);
+
+            Label PersonLabel = (Label)Transactionview.FindControl("PersonLabel");
+
+            PersonLabel.Text = id.ToString();
+
+            Label BiljettLabel = (Label)Transactionview.FindControl("BiljettLabel");
+
+            BiljettLabel.Text = id2.ToString();
+
+        }
         public void Transactionview_InsertItem(Transaction transaction)
         {
             try
@@ -43,6 +59,11 @@ namespace IndividuelltProjekt.Ticketregpages
 
                 ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

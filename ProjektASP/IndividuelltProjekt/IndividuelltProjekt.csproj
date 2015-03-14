@@ -81,12 +81,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\BLL\FinishRegistration.cs" />
     <Compile Include="Model\BLL\Person.cs" />
     <Compile Include="Model\BLL\Service.cs" />
     <Compile Include="Model\BLL\Ticket.cs" />
     <Compile Include="Model\BLL\Transaction.cs" />
     <Compile Include="Model\BLL\ValidatonExtensions.cs" />
     <Compile Include="Model\DAL\DALBase.cs" />
+    <Compile Include="Model\DAL\FinishRegDAL.cs" />
     <Compile Include="Model\DAL\PersonDAL.cs" />
     <Compile Include="Model\DAL\TicketDAL.cs" />
     <Compile Include="Model\DAL\TransactionDAL.cs" />
