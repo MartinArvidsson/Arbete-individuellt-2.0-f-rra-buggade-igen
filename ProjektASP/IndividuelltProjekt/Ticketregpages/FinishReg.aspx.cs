@@ -63,9 +63,17 @@ namespace IndividuelltProjekt.Ticketregpages
         {
             try
             {
-                LinkButton btn = (LinkButton)(sender);
-                int BiljettID = btn.CommandArgument[0];
-                int PersonID = btn.CommandArgument[1];
+                //LinkButton btn = (LinkButton)(sender);
+                //int BiljettID = btn.CommandArgument[0];
+                //int PersonID = btn.CommandArgument[1];
+
+                Label BiljettLabel = (Label)EndView.FindControl("BiljettLabel");
+                string BiljettID = BiljettLabel.Text;
+                Convert.ToInt32(BiljettID);
+
+                Label PersonLabel = (Label)EndView.FindControl("PersonLabel");
+                string PersonID = PersonLabel.Text;
+                Convert.ToInt32(PersonID);
 
                 Transaction tran = new Transaction();
                 tran.PersonID = PersonID;
