@@ -20,7 +20,6 @@
                     SelectMethod="Transactionview_GetData"
                     InsertMethod="Transactionview_InsertItem"
                     DeleteMethod="Transactionview_DeleteItem"
-
                     DataKeyNames="TransactionID"
 
                     InsertItemPosition="FirstItem">
@@ -67,7 +66,8 @@
 
                             <td class="command">
                                 <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false" OnClientClick="return confirmation();"/>
-                            </td>                           
+                            </td>
+                         
                         </tr>
                     </ItemTemplate>
                     

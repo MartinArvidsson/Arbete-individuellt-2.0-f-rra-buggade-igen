@@ -40,31 +40,13 @@ namespace IndividuelltProjekt.Ticketregpages {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// BiljettLabel control.
+        /// EndView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BiljettLabel;
-        
-        /// <summary>
-        /// PersonLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PersonLabel;
-        
-        /// <summary>
-        /// Transactionview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView Transactionview;
+        protected global::System.Web.UI.WebControls.ListView EndView;
         
         /// <summary>
         /// Button1 control.

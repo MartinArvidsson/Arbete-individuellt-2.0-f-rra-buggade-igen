@@ -59,28 +59,25 @@ namespace IndividuelltProjekt.Model.DAL
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("AppSchema.usp_GetSpecifikPerson", conn);
+                    var cmd = new SqlCommand("AppSchema.usp_GetSpecifikPerson", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@PersonID", personID);
-
+                    cmd.Parameters.Add("@PersonID",SqlDbType.Int, 4).Value = personID;
                     conn.Open();
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (var reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            int PersonIDIndex = reader.GetOrdinal("PersonID");
-                            int FnamnIndex = reader.GetOrdinal("Fnamn");
-                            int EnamnIndex = reader.GetOrdinal("Enamn");
-                            int FdatumIndex = reader.GetOrdinal("Fdatum");
+                            var PersonIDIndex = reader.GetOrdinal("PersonID");
+                            var FnamnIndex = reader.GetOrdinal("Fnamn");
+                            var EnamnIndex = reader.GetOrdinal("Enamn");
 
                             return new Person
                             {
                                 PersonID = reader.GetInt32(PersonIDIndex),
                                 Fnamn = reader.GetString(FnamnIndex),
                                 Enamn = reader.GetString(EnamnIndex),
-                                Fdatum = reader.GetString(FdatumIndex)
                             };
                         }
                     }

@@ -40,11 +40,12 @@ namespace IndividuelltProjekt.Ticketregpages
             {
             LinkButton btn = (LinkButton)(sender);
                  string BiljettID = btn.CommandArgument;
-                    Response.RedirectToRoute("Biljett", new { id2 = BiljettID });
+                    
+               
 
-                    Response.RedirectToRoute("FinishReg");
+                Response.RedirectToRoute("FinishReg", new { id2 = BiljettID });
             
-            Session["ValidationSession"] = string.Format("Du Valde Biljett nummer:{0} för registrering, Registeringen lyckades!", BiljettID);
+            Session["ValidationSession"] = string.Format("Du Valde Biljett nummer:{0} för registrering, Tryck på avsluta registering för att bli klar.", BiljettID);
             }
             catch(Exception)
             {

@@ -16,32 +16,17 @@
     
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade"
         cssClass="ValidationSumErrors" />
-      
-    <asp:label ID="BiljettLabel" runat="server" Text=""></asp:label>
-    <asp:label ID="PersonLabel" runat="server" Text=""></asp:label>--%>
-    
-    <asp:ListView ID="Transactionview" runat="server"
-
+       
+    <asp:ListView ID="EndView" runat="server"
                     ItemType="IndividuelltProjekt.Model.BLL.Transaction"
-
-                    SelectMethod="Transactionview_GetData"
-
-                    InsertMethod="Transactionview_InsertItem"
-
-                    DataKeyNames="TransactionID"
-
-                    InsertItemPosition="FirstItem">
+                    SelectMethod="EndView_GetData"
+                    DataKeyNames="PersonID">
+                    
                     <LayoutTemplate>
                         <table>
                             <tr>
                                 <th>
                                     Person
-                                </th>
-                                <th>
-                                    Förnamn
-                                </th>
-                                <th>
-                                    Efternamn
                                 </th>
                                 <th>
                                     Biljett
@@ -53,45 +38,18 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <%#:Item.PersonID %>
+                              Biljett nummer:<asp:label ID="BiljettLabel" runat="server" Text=""></asp:label>  
                             </td>
                             <td>                            
-                                <%#:Item.Fnamn %>
+                              Person nummer:<asp:label ID="PersonLabel" runat="server" Text=""></asp:label>
                             </td>
-                            <td>
-                                <%#:Item.Enamn %>
-                            </td>
-                            <td>
-                                <%#:Item.BiljettID %>
-                            </td>
-                           <td class="command">    
-                           </td>                           
+                           <td class="command">
+                               <td>
+                                       <asp:LinkButton runat="server" CommandArgument='<%#:Item.PersonID %>';'<%#: Item.BiljettID %>' OnClick="InsertView_InsertItem" Text="avsluta" CausesValidation="false"/>                                
+                               </td>     
+                           </td>                                                        
                         </tr>
                     </ItemTemplate>
-                    
-                    <EmptyDataTemplate>
-                         <table class="grid">
-                        <tr>
-                            <td>
-                                Personuppgift saknas .
-                            </td>
-                        </tr>
-                    </table>
-                    </EmptyDataTemplate>
-                <InsertItemTemplate>
-                <tr>
-                <td>
-                        <%#: Item.PersonID %>
-                    </td>
-                    <td>
-                        <%#: Item.BiljettID %>
-                    </td>
-                    <td>
-                        <asp:LinkButton runat="server" CommandName="Insert" Text="Slutför!" ValidationGroup="Temp" />
-                    
-                    </td>
-                    </tr>
-                </InsertItemTemplate>
-            </asp:ListView>  
-    <asp:Button ID="Button1" runat="server" Text="Avsluta registrering" OnClick="Button1_Click" Enabled="false" /> 
+            </asp:ListView>
+    <asp:Button ID="Button1" runat="server" Text="Button" enabled="false"/>
 </asp:Content>

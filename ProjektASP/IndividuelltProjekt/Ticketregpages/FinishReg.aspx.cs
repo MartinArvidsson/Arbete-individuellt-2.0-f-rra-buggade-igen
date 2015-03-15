@@ -29,20 +29,22 @@ namespace IndividuelltProjekt.Ticketregpages
             }
         }
 
-        public IEnumerable<Person> Transactionview_GetData([RouteData] int id, [RouteData] int id2)
+        public void EndView_GetData([RouteData] int id, [RouteData] int id2)
         {
-            Label PersonLabel = (Label)Transactionview.FindControl("PersonLabel");
-            PersonLabel.Text = id.ToString();
+            int biljett = id2;
+            int person = id;
 
-            Label BiljettLabel = (Label)Transactionview.FindControl("BiljettLabel");
-            BiljettLabel.Text = id2.ToString();
+            Label BiljettLabel = (Label)EndView.FindControl("BiljettLabel");
+            BiljettLabel.Text = biljett.ToString();
 
-            return Service.GetPerson(id) as IEnumerable<Person>;
+            Label PersonLabel = (Label)EndView.FindControl("PersonLabel");
+            BiljettLabel.Text = biljett.ToString();
         }
-        public void Transactionview_InsertItem(Transaction transaction)
+        public void InsertView_InsertItem(Transaction transaction)
         {
             try
             {
+
                 Service.SaveTransaction(transaction);
                 Session["ValidationSession"] = "Du har lagt till Transaktionen";
                 Button1.Enabled = true;

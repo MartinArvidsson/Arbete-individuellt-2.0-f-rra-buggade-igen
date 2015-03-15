@@ -90,19 +90,19 @@ namespace IndividuelltProjekt.Ticketregpages
 
         public void PersonListView_AddFaktura(object sender, EventArgs e)
         {
-            //try
-            //{
-                LinkButton btn =(LinkButton)(sender);
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
                 string personID = btn.CommandArgument;
-                
-                Response.RedirectToRoute("Person", new { id = personID});
-                Session["ValidationSession"] = string.Format("Du har valt person nummer:{0} för registrering, Välj biljett!",personID);
 
-            //}
-            //catch(Exception)
-            //{
-            //    ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då Fakturan skulle skapas.");
-            //}
+                Response.RedirectToRoute("Person", new { id = personID });
+                Session["ValidationSession"] = string.Format("Du har valt person nummer:{0} för registrering, Välj biljett!", personID);
+
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då Fakturan skulle skapas.");
+            }
         }
     }
 }
