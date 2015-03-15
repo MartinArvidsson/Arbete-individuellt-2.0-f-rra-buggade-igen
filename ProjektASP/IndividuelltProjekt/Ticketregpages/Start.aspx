@@ -2,6 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <asp:PlaceHolder ID="MessagePlaceholder" Visible="false" runat="server">
+                    <div id="MessageBox">
+                        <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
+                            <div id="CloseButton">
+                               <label>X</label>
+                            </div>
+                    </div>
+    </asp:PlaceHolder> 
+
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade"
         cssClass="ValidationSumErrors" />
 

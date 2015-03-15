@@ -23,29 +23,21 @@ namespace IndividuelltProjekt.Ticketregpages
         {
             if (Session["ValidationSession"] != null)
             {
-                //var messageplaceholder = Master.FindControl("MessagePlaceholderText") as PlaceHolder;
-                //messageplaceholder.Visible = true;
-
-                //var ConfirmationLabel = Master.FindControl("ConfirmationLabelText") as Label;
-                //ConfirmationLabel.Text = Session["ValidationSession"] as string;
-
+                MessagePlaceholder.Visible = true;
+                ConfirmationLabel.Text = Session["ValidationSession"] as string;
                 Session["ValidationSession"] = null;
             }
         }
 
-        public void Transactionview_GetData([RouteData] int id,[RouteData] int id2)
+        public IEnumerable<Person> Transactionview_GetData([RouteData] int id, [RouteData] int id2)
         {
-            //return Service.FinishRegGetPerson(id),Service.FinishRegGetTicket(id2);
-            //return Service.FinishRegGetTicket(id2);
-
             Label PersonLabel = (Label)Transactionview.FindControl("PersonLabel");
-
             PersonLabel.Text = id.ToString();
 
             Label BiljettLabel = (Label)Transactionview.FindControl("BiljettLabel");
-
             BiljettLabel.Text = id2.ToString();
 
+            return Service.GetPerson(id) as IEnumerable<Person>;
         }
         public void Transactionview_InsertItem(Transaction transaction)
         {
@@ -53,6 +45,7 @@ namespace IndividuelltProjekt.Ticketregpages
             {
                 Service.SaveTransaction(transaction);
                 Session["ValidationSession"] = "Du har lagt till Transaktionen";
+                Button1.Enabled = true;
             }
             catch (Exception)
             {
@@ -63,7 +56,7 @@ namespace IndividuelltProjekt.Ticketregpages
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-
+            Response.RedirectToRoute("Start");
         }
     }
 }

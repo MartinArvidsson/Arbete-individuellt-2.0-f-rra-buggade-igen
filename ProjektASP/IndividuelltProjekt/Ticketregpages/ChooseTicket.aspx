@@ -1,13 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Masterpage.Master" AutoEventWireup="true" CodeBehind="ChooseTicket.aspx.cs" Inherits="IndividuelltProjekt.Ticketregpages.ChooseTicket" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-     <asp:ListView ID="ContactListView" runat="server"
+    <asp:PlaceHolder ID="MessagePlaceholder" Visible="false" runat="server">
+                    <div id="MessageBox">
+                        <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
+                            <div id="CloseButton">
+                               <label>X</label>
+                            </div>
+                    </div>
+    </asp:PlaceHolder>
+    
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade"
+        cssClass="ValidationSumErrors" />
+     
+    <asp:ListView ID="ContactListView" runat="server"
                     ItemType="IndividuelltProjekt.Model.BLL.Ticket"
-
                     SelectMethod="TicketListView_GetData"
-                    DataKeyNames="BiljettID"
-
-                   >
+                    DataKeyNames="BiljettID">
                     <LayoutTemplate>
                         <table>
                             <tr>
@@ -41,11 +49,7 @@
                                 <%#: Item.kostnad %>
                             </td>
                             <td class="Commands">
-                                <asp:LinkButton runat="server" CommandArgument='<%#:Item.BiljettID %>' OnClick="TicketListView_AddFaktura" Text="Välj för fakturaregistering" CausesValidation="false"/>
-                                
-                                <%--<input type="radio" name="RadioTicket" checked="checked" value='<%#Eval("BiljettID") %>'/>--%>
-                                <%-- Förbannat vad strul det ska vara med radiobutton i listview, Fråga om en ev. bättre lösning --%>
-                                
+                                <asp:LinkButton runat="server" CommandArgument='<%#:Item.BiljettID %>' OnClick="TicketListView_AddFaktura" Text="Välj för fakturaregistering" CausesValidation="false"/>                                
                             </td>
                         </tr>
                     </ItemTemplate>

@@ -6,3 +6,7 @@ C:\Users\ma223ku\Desktop\ProjektASP\IndividuelltProjekt\obj\Debug\IndividuelltPr
 C:\Users\ma223ku\Desktop\ProjektASP\IndividuelltProjekt\obj\Debug\IndividuelltProjekt.pdb
 C:\Users\Martin\Desktop\Projekt ASP\ProjektASP\IndividuelltProjekt\obj\Debug\IndividuelltProjekt.csprojResolveAssemblyReference.cache
 C:\Users\Martin\Desktop\Projekt ASP\ProjektASP\IndividuelltProjekt\obj\Debug\IndividuelltProjekt.dll
+C:\Users\Martin\Desktop\Projekt ASP\ProjektASP\IndividuelltProjekt\bin\IndividuelltProjekt.dll.config
+C:\Users\Martin\Desktop\Projekt ASP\ProjektASP\IndividuelltProjekt\bin\IndividuelltProjekt.dll
+C:\Users\Martin\Desktop\Projekt ASP\ProjektASP\IndividuelltProjekt\bin\IndividuelltProjekt.pdb
+C:\Users\Martin\Desktop\Projekt ASP\ProjektASP\IndividuelltProjekt\obj\Debug\IndividuelltProjekt.pdb

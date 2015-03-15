@@ -22,12 +22,8 @@ namespace IndividuelltProjekt.Ticketregpages
         {
             if (Session["ValidationSession"] != null)
             {
-                //var messageplaceholder = Master.FindControl("MessagePlaceholderText") as PlaceHolder;
-                //messageplaceholder.Visible = true;
-
-                //var ConfirmationLabel = Master.FindControl("ConfirmationLabelText") as Label;
-                //ConfirmationLabel.Text = Session["ValidationSession"] as string;
-
+                MessagePlaceholder.Visible = true;
+                ConfirmationLabel.Text = Session["ValidationSession"] as string;
                 Session["ValidationSession"] = null;
             }
         }

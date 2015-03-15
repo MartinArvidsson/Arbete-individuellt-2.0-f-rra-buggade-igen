@@ -13,13 +13,31 @@ namespace IndividuelltProjekt.Ticketregpages {
     public partial class FinishReg {
         
         /// <summary>
-        /// PersonLabel control.
+        /// MessagePlaceholder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PersonLabel;
+        protected global::System.Web.UI.WebControls.PlaceHolder MessagePlaceholder;
+        
+        /// <summary>
+        /// ConfirmationLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ConfirmationLabel;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// BiljettLabel control.
@@ -29,6 +47,15 @@ namespace IndividuelltProjekt.Ticketregpages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label BiljettLabel;
+        
+        /// <summary>
+        /// PersonLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label PersonLabel;
         
         /// <summary>
         /// Transactionview control.

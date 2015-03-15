@@ -15,8 +15,6 @@ namespace IndividuelltProjekt.Model.BLL
         {
             get { return _personDAL ?? (_personDAL = new PersonDAL()); }
         }
-
-        
         //<-- hämta alla
         public IEnumerable<Person> GetPersons()
         {
@@ -35,24 +33,18 @@ namespace IndividuelltProjekt.Model.BLL
                 PersonDAL.UpdatePerson(person);
             }
         }
-
         // <-- Ta bort
         public void DeletePerson(int PersonID)
         {
             PersonDAL.DeletePerson(PersonID);
         }
-
         // <-- Hämta specifik Behövs för update
-
         public Person GetPerson(int personID)
         {
             return PersonDAL.GetSpecifikPerson(personID);
         }
-        
-        
         //GREJER FÖR BILJETT
         private TicketDAL _ticketDAL;
-
         private TicketDAL TicketDAL
         {
             get { return _ticketDAL ?? (_ticketDAL = new TicketDAL()); }
@@ -67,10 +59,8 @@ namespace IndividuelltProjekt.Model.BLL
         {
             return TicketDAL.GetSpecifikTicket(BiljettID);
         }
-
         //GREJER FÖR TRANSAKTION = CREATE READ DELETE
         private TransactionDAL _transactionDAL;
-
         private TransactionDAL TransactionDAL
         {
             get { return _transactionDAL ?? (_transactionDAL = new TransactionDAL()); }
@@ -90,19 +80,5 @@ namespace IndividuelltProjekt.Model.BLL
         {
             TransactionDAL.DeleteTransaction(TransactionID);
         }
-
-
-
-        //För FinishReg
-
-        //public FinishRegistration FinishRegGetTicket(int BiljettID)
-        //{
-        //    return FinishRegDAL.GetSpecifikTicket(BiljettID);
-        //}
-
-        //public FinishRegistration FinishRegGetPerson(int personID)
-        //{
-        //    return FinishRegDAL.GetSpecifikPerson(personID);
-        //}
     }
 }

@@ -1,8 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Shared/Masterpage.Master" AutoEventWireup="true" CodeBehind="RegPerson.aspx.cs" Inherits="IndividuelltProjekt.Ticketregpages.RegPerson" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
+    
+    
+        <asp:PlaceHolder ID="MessagePlaceholder" Visible="false" runat="server">
+                    <div id="MessageBox">
+                        <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
+                            <div id="CloseButton">
+                               <label>X</label>
+                            </div>
+                    </div>
+        </asp:PlaceHolder>    
+    
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade"
                 cssClass="ValidationSumErrors" />
-
 
                 <asp:ListView ID="PersonListView" runat="server"
                     ItemType="IndividuelltProjekt.Model.BLL.Person"
