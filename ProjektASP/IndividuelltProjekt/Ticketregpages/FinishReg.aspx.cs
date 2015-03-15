@@ -40,25 +40,46 @@ namespace IndividuelltProjekt.Ticketregpages
             Label PersonLabel = (Label)EndView.FindControl("PersonLabel");
             BiljettLabel.Text = biljett.ToString();
         }
-        public void InsertView_InsertItem(Transaction transaction)
-        {
-            try
-            {
-
-                Service.SaveTransaction(transaction);
-                Session["ValidationSession"] = "Du har lagt till Transaktionen";
-                Button1.Enabled = true;
-            }
-            catch (Exception)
-            {
-
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
-            }
-        }
+        //public void InsertView_InsertItem(Transaction transaction)
+        //{
+        //    try
+        //    {
+        //        Service.SaveTransaction(transaction);
+        //        Session["ValidationSession"] = "Du har lagt till Transaktionen";
+        //        Button1.Enabled = true;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
+        //    }
+        //}
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             Response.RedirectToRoute("Start");
+        }
+
+        protected void Finish_Registration(object sender, EventArgs e)
+        {
+            try
+            {
+                LinkButton btn = (LinkButton)(sender);
+                int BiljettID = btn.CommandArgument[0];
+                int PersonID = btn.CommandArgument[1];
+
+                Transaction tran = new Transaction();
+                tran.PersonID = PersonID;
+                tran.BiljettID = BiljettID;
+
+                Service.SaveTransaction(tran);
+                Session["ValidationSession"] = "Du har lagt till Transaktionen";
+                Button1.Enabled = true;
+
+            }
+            catch(Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
+            }
         }
     }
 }

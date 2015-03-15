@@ -20,8 +20,7 @@
     <asp:ListView ID="EndView" runat="server"
                     ItemType="IndividuelltProjekt.Model.BLL.Transaction"
                     SelectMethod="EndView_GetData"
-                    DataKeyNames="PersonID">
-                    
+                    DataKeyNames="TransactionID">                    
                     <LayoutTemplate>
                         <table>
                             <tr>
@@ -37,15 +36,15 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                         <tr>
-                            <td>
-                              Biljett nummer:<asp:label ID="BiljettLabel" runat="server" Text=""></asp:label>  
-                            </td>
-                            <td>                            
-                              Person nummer:<asp:label ID="PersonLabel" runat="server" Text=""></asp:label>
-                            </td>
+                                <td>
+                                     Biljett nummer:<asp:label ID="BiljettLabel" runat="server" Text=""></asp:label>  
+                                </td>
+                                <td>                            
+                                    Person nummer:<asp:label ID="PersonLabel" runat="server" Text=""></asp:label>
+                                </td>
                            <td class="command">
-                               <td>
-                                       <asp:LinkButton runat="server" CommandArgument='<%#:Item.PersonID %>';'<%#: Item.BiljettID %>' OnClick="InsertView_InsertItem" Text="avsluta" CausesValidation="false"/>                                
+                               <td>                             
+                                    <asp:LinkButton runat="server" Text="Avsluta!" CausesValidation="false" OnClick="Finish_Registration" CommandArgument='<%#Convert.ToInt32(Eval("PersonLabel"))%>''<%#Convert.ToInt32(Eval("BiljettLabel"))%>'/>
                                </td>     
                            </td>                                                        
                         </tr>
