@@ -44,7 +44,11 @@
                                 </td>
                            <td class="command">
                                <td>                             
-                                    <asp:LinkButton runat="server" Text="Avsluta!" CausesValidation="false" OnClick="Finish_Registration"/>
+                                    <asp:LinkButton runat="server"
+                                        Text="Avsluta!" 
+                                        CausesValidation="false" 
+                                        OnClick="Finish_Registration" 
+                                        CommandArgument='<%#Eval("PersonLabel")+","+ Eval("BiljettLabel")%>'/>
                                </td>     
                            </td>                                                        
                         </tr>

@@ -31,14 +31,15 @@ namespace IndividuelltProjekt.Ticketregpages
 
         public void EndView_GetData([RouteData] int id, [RouteData] int id2)
         {
-            int biljett = id2;
-            int person = id;
-
-            Label BiljettLabel = (Label)EndView.FindControl("BiljettLabel");
-            BiljettLabel.Text = biljett.ToString();
-
+            EndView.FindControl("PersonLabel");
             Label PersonLabel = (Label)EndView.FindControl("PersonLabel");
-            BiljettLabel.Text = biljett.ToString();
+            PersonLabel.Text = id.ToString();
+            
+            //Label PersonLabel = (Label)EndView.FindControl("PersonLabel");
+            //PersonLabel.Text = id.ToString();
+            
+            Label BiljettLabel = (Label)EndView.FindControl("BiljettLabel");
+            BiljettLabel.Text = id2.ToString();
         }
         //public void InsertView_InsertItem(Transaction transaction)
         //{
@@ -63,18 +64,11 @@ namespace IndividuelltProjekt.Ticketregpages
         {
             try
             {
-                //LinkButton btn = (LinkButton)(sender);
-                //int BiljettID = btn.CommandArgument[0];
-                //int PersonID = btn.CommandArgument[1];
-
-                Label BiljettLabel = (Label)EndView.FindControl("BiljettLabel");
-                string BiljettID = BiljettLabel.Text;
-                Convert.ToInt32(BiljettID);
-
-                Label PersonLabel = (Label)EndView.FindControl("PersonLabel");
-                string PersonID = PersonLabel.Text;
-                Convert.ToInt32(PersonID);
-
+                LinkButton btn = (LinkButton)(sender);
+                int BiljettID = btn.CommandArgument[0];
+                int PersonID = btn.CommandArgument[1];
+                
+                
                 Transaction tran = new Transaction();
                 tran.PersonID = PersonID;
                 tran.BiljettID = BiljettID;
