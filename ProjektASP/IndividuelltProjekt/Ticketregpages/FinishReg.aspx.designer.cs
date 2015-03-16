@@ -13,6 +13,15 @@ namespace IndividuelltProjekt.Ticketregpages {
     public partial class FinishReg {
         
         /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
         /// MessagePlaceholder control.
         /// </summary>
         /// <remarks>
@@ -31,22 +40,22 @@ namespace IndividuelltProjekt.Ticketregpages {
         protected global::System.Web.UI.WebControls.Label ConfirmationLabel;
         
         /// <summary>
-        /// ValidationSummary1 control.
+        /// BiljettLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Label BiljettLabel;
         
         /// <summary>
-        /// EndView control.
+        /// PersonLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView EndView;
+        protected global::System.Web.UI.WebControls.Label PersonLabel;
         
         /// <summary>
         /// Button1 control.

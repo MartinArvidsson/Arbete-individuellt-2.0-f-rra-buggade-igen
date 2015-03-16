@@ -28,60 +28,10 @@ namespace IndividuelltProjekt.Ticketregpages
                 Session["ValidationSession"] = null;
             }
         }
-
-        public void EndView_GetData([RouteData] int id, [RouteData] int id2)
-        {
-            EndView.FindControl("PersonLabel");
-            Label PersonLabel = (Label)EndView.FindControl("PersonLabel");
-            PersonLabel.Text = id.ToString();
-            
-            //Label PersonLabel = (Label)EndView.FindControl("PersonLabel");
-            //PersonLabel.Text = id.ToString();
-            
-            Label BiljettLabel = (Label)EndView.FindControl("BiljettLabel");
-            BiljettLabel.Text = id2.ToString();
-        }
-        //public void InsertView_InsertItem(Transaction transaction)
-        //{
-        //    try
-        //    {
-        //        Service.SaveTransaction(transaction);
-        //        Session["ValidationSession"] = "Du har lagt till Transaktionen";
-        //        Button1.Enabled = true;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
-        //    }
-        //}
-
         protected void Button1_Click(object sender, EventArgs e)
         {
+            //Skicka in parametrar till Service.SaveTransaction.
             Response.RedirectToRoute("Start");
-        }
-
-        protected void Finish_Registration(object sender, EventArgs e)
-        {
-            try
-            {
-                LinkButton btn = (LinkButton)(sender);
-                int BiljettID = btn.CommandArgument[0];
-                int PersonID = btn.CommandArgument[1];
-                
-                
-                Transaction tran = new Transaction();
-                tran.PersonID = PersonID;
-                tran.BiljettID = BiljettID;
-
-                Service.SaveTransaction(tran);
-                Session["ValidationSession"] = "Du har lagt till Transaktionen";
-                Button1.Enabled = true;
-
-            }
-            catch(Exception)
-            {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
-            }
         }
     }
 }

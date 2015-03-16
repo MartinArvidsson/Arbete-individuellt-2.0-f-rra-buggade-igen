@@ -4,55 +4,21 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-  
+      
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade"/>
+
      <asp:PlaceHolder ID="MessagePlaceholder" Visible="false" runat="server">
-                    <div id="MessageBox">
-                        <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
-                            <div id="CloseButton">
-                               <label>X</label>
-                            </div>
-                    </div>
-                </asp:PlaceHolder>
+         <div id="MessageBox">
+             <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
+             <div id="CloseButton">
+                 <label>X</label>
+             </div>
+         </div>
+      </asp:PlaceHolder>
+
+     Person nummer:<asp:Label ID="BiljettLabel" runat="server" Text="<%$RouteValue:id%>"></asp:Label> <br />
+    Biljett nummer:<asp:Label ID="PersonLabel" runat="server" Text="<%$RouteValue:id2%>"></asp:Label> <br />                                                     
+                          
     
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade"
-        cssClass="ValidationSumErrors" />
-       
-    <asp:ListView ID="EndView" runat="server"
-                    ItemType="IndividuelltProjekt.Model.BLL.Transaction"
-                    SelectMethod="EndView_GetData"
-                    DataKeyNames="TransactionID">                    
-                    <LayoutTemplate>
-                        <table>
-                            <tr>
-                                <th>
-                                    Person
-                                </th>
-                                <th>
-                                    Biljett
-                                </th>
-                            </tr>
-                            <asp:PlaceHolder ID="ItemPlaceholder" runat="server"/>
-                        </table>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <tr>
-                                <td>
-                                     Biljett nummer:<asp:label ID="BiljettLabel" runat="server" Text=""></asp:label>  
-                                </td>
-                                <td>                            
-                                    Person nummer:<asp:label ID="PersonLabel" runat="server" Text=""></asp:label>
-                                </td>
-                           <td class="command">
-                               <td>                             
-                                    <asp:LinkButton runat="server"
-                                        Text="Avsluta!" 
-                                        CausesValidation="false" 
-                                        OnClick="Finish_Registration" 
-                                        CommandArgument='<%#Eval("PersonLabel")+","+ Eval("BiljettLabel")%>'/>
-                               </td>     
-                           </td>                                                        
-                        </tr>
-                    </ItemTemplate>
-            </asp:ListView>
-    <asp:Button ID="Button1" runat="server" Text="Button" enabled="false"/>
+    <asp:Button ID="Button1" runat="server" Text="Avsluta registering" enabled="false"/>
 </asp:Content>
