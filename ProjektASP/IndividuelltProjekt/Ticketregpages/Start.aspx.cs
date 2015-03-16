@@ -32,19 +32,6 @@ namespace IndividuelltProjekt.Ticketregpages
             return Service.GetTransactions();
             
         }
-        public void Transactionview_InsertItem(Transaction transaction)
-        {
-            try
-            {
-                Service.SaveTransaction(transaction);
-                Session["ValidationSession"] = "Du har lagt till Transaktionen";
-            }
-            catch (Exception)
-            {
-
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
-            }
-        }
         public void Transactionview_DeleteItem(int TransactionID)
         {
             try
@@ -60,7 +47,7 @@ namespace IndividuelltProjekt.Ticketregpages
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Response.Redirect("http://localhost:61141/Ticketregpages/RegPerson.aspx");
+            Response.RedirectToRoute("StartPerson");
         }
     }
 }

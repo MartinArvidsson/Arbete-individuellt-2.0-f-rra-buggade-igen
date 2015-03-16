@@ -18,5 +18,8 @@ namespace IndividuelltProjekt.Model.BLL
 
         public string Enamn { get; set; }
         public string Fdatum { get; set; }
+        public string BiljettNamn { get; set; }
+        public decimal BiljettKostnad { get; set; }
+
     }
 }

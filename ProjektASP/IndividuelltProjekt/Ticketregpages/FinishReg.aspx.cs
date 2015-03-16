@@ -30,8 +30,23 @@ namespace IndividuelltProjekt.Ticketregpages
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //Skicka in parametrar till Service.SaveTransaction.
-            Response.RedirectToRoute("Start");
+            var PersonID = int.Parse(RouteData.Values["id"].ToString());
+            var BiljettID = int.Parse(RouteData.Values["id2"].ToString());
+            try
+            {
+                Transaction tran = new Transaction();
+                tran.PersonID = PersonID;
+                tran.BiljettID = BiljettID;
+
+                //Skicka in parametrar till Service.SaveTransaction.
+                Service.SaveTransaction(tran);               
+                Response.RedirectToRoute("Start");
+                Session["ValidationSession"] = "Transaktionen lades till";
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då transaktionen skulle Tas och Läggas till.");
+            }
         }
     }
 }

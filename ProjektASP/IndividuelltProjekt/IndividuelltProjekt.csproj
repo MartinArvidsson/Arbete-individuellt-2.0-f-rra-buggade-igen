@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Design\BackgroundProjekt.jpg" />
     <Content Include="Design\Base.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Close.js" />

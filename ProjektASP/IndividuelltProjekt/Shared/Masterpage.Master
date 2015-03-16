@@ -6,22 +6,15 @@
 <head runat="server">
     <script src="../Scripts/Close.js"></script>
     <script src="../Scripts/ConfirmDelete.js"></script>
+    <link rel="stylesheet" type="text/css" href="../Design/Base.css" />
     <title></title>
     <asp:ContentPlaceHolder ID="Head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <h1>Min masterpage temptext</h1>
-        <asp:PlaceHolder ID="MessagePlaceholder" Visible="false" runat="server">
-                    <div id="MessageBox">
-                        <asp:Label ID="ConfirmationLabel" runat="server" Text=""></asp:Label>
-                            <div id="CloseButton">
-                               <label>X</label>
-                            </div>
-                    </div>
-                </asp:PlaceHolder>
+    <div id="Placeholder2">
+        <h1>Martin Arvidssons projekt! Biljettregistering</h1>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>

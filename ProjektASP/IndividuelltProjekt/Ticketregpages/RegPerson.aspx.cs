@@ -31,8 +31,15 @@ namespace IndividuelltProjekt.Ticketregpages
 
         public IEnumerable<Person> PersonListView_GetData()
         {
-            return Service.GetPersons();
-
+            try
+            {
+                return Service.GetPersons();
+            }
+            catch(Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då Personuppgifterna skulle hämtas.");
+                return null;
+            }
         }
 
         public void PersonListView_InsertItem(Person person)

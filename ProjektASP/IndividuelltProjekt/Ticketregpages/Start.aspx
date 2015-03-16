@@ -16,7 +16,6 @@
 
                 <asp:ListView ID="Transactionview" runat="server"
                     ItemType="IndividuelltProjekt.Model.BLL.Transaction"
-
                     SelectMethod="Transactionview_GetData"
                     InsertMethod="Transactionview_InsertItem"
                     DeleteMethod="Transactionview_DeleteItem"
@@ -24,7 +23,7 @@
 
                     InsertItemPosition="FirstItem">
                     <LayoutTemplate>
-                        <table>
+                        <table id="TableOne">
                             <tr>
                                 <th>
                                     Person
@@ -40,6 +39,12 @@
                                 </th>
                                 <th>
                                     Biljettyp
+                                </th>
+                                <th>
+                                    Biljettnamn
+                                </th>
+                                <th>
+                                    Kostnad
                                 </th>
                             </tr>
                             <asp:PlaceHolder ID="ItemPlaceholder" runat="server"/>
@@ -63,7 +68,12 @@
                             <td>
                                 <%#: Item.BiljettID %>
                             </td>
-
+                            <td>
+                                <%#: Item.BiljettNamn %>
+                            </td>
+                            <td>
+                                <%#: Item.BiljettKostnad %>
+                            </td>
                             <td class="command">
                                 <asp:LinkButton runat="server" CommandName="Delete" Text="Ta bort" CausesValidation="false" OnClientClick="return confirmation();"/>
                             </td>
@@ -81,17 +91,6 @@
                     </table>
                     </EmptyDataTemplate>
                 <InsertItemTemplate>
-                <%--<tr>
-                        <td>
-                            <asp:TextBox ID="PersonID" runat="server" Text='<%# BindItem.PersonID %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="BiljettID" runat="server" Text='<%# BindItem.BiljettID %>' />
-                        </td>
-                        <td>
-                            <asp:LinkButton runat="server" CommandName="Insert" Text="Lägg till" />
-                        </td>
-                    </tr>--%>
                 </InsertItemTemplate>
             </asp:ListView>  
     <asp:Button ID="Button1" runat="server" Text="Starta registering" OnClick="Button1_Click" />                  

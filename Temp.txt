@@ -1,1 +1,0 @@
-CommandArgument='<%#Convert.ToInt32(Eval("PersonLabel"))%>''<%#Convert.ToInt32(Eval("BiljettLabel"))%>'

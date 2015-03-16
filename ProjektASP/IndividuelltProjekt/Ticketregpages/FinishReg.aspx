@@ -20,5 +20,5 @@
     Biljett nummer:<asp:Label ID="PersonLabel" runat="server" Text="<%$RouteValue:id2%>"></asp:Label> <br />                                                     
                           
     
-    <asp:Button ID="Button1" runat="server" Text="Avsluta registering" enabled="false"/>
+    <asp:Button ID="Button1" runat="server" Text="Avsluta registering" OnClick="Button1_Click"/>
 </asp:Content>

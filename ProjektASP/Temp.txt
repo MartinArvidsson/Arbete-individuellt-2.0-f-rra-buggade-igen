@@ -1,0 +1,11 @@
+<asp:LinkButton runat="server"
+                                        Text="Avsluta!" 
+                                        CausesValidation="false" 
+                                        OnClick="Finish_Registration" 
+                                        CommandArgument='<%#Eval("PersonLabel")+","+ Eval("BiljettLabel")%>'/>
+
+
+
+
+
+CommandArgument='<%#Convert.ToInt32(Eval("PersonLabel"))%>''<%#Convert.ToInt32(Eval("BiljettLabel"))%>'

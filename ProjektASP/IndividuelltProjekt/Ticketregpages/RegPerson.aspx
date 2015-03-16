@@ -29,7 +29,7 @@
 
                     InsertItemPosition="FirstItem">
                     <LayoutTemplate>
-                        <table>
+                        <table id="TableOne">
                             <tr>
                                 <th>
                                     Förnamn

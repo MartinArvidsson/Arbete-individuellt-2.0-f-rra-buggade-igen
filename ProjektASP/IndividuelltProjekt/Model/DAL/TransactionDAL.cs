@@ -32,6 +32,9 @@ namespace IndividuelltProjekt.Model.DAL
                         var FnamnIndex = reader.GetOrdinal("Fnamn");
                         var EnamnIndex = reader.GetOrdinal("Enamn");
                         var FdatumIndex = reader.GetOrdinal("Fdatum");
+                        var BiljettNamnIndex = reader.GetOrdinal("Biljettnamn");
+                        var BiljettKostnadIndex = reader.GetOrdinal("Kostnad");
+
 
                         while (reader.Read())
                         {
@@ -43,6 +46,8 @@ namespace IndividuelltProjekt.Model.DAL
                                 Fnamn = reader.GetString(FnamnIndex),
                                 Enamn = reader.GetString(EnamnIndex),
                                 Fdatum = reader.GetString(FdatumIndex),
+                                BiljettNamn = reader.GetString(BiljettNamnIndex),
+                                BiljettKostnad = reader.GetDecimal(BiljettKostnadIndex)
                             });
                         }
                     }
@@ -68,6 +73,7 @@ namespace IndividuelltProjekt.Model.DAL
 
                     cmd.Parameters.Add("@PersonID", SqlDbType.Int).Value = transaction.PersonID;
                     cmd.Parameters.Add("@BiljettID", SqlDbType.Int).Value = transaction.BiljettID;
+                    cmd.Parameters.Add("@TransactionID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
                     conn.Open();
                     cmd.ExecuteNonQuery();
 

@@ -1,2 +1,44 @@
 ﻿body {
+    background-image:url(BackgroundProjekt.jpg)
 }
+#ContentPlaceHolder1{
+    border:solid 2px white;
+    background-color:white;
+}
+html{
+    padding-top:50px;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+#Placeholder2{
+    text-align:center;
+}
+#TableOne{
+  border:solid 2px Black;
+  background-color:white;
+  margin-left:auto;
+  margin-right:auto;
+}
+.th{
+    text-align:center;
+    border:solid 0.5px Black;
+    width:auto;
+}
+.td{
+    text-align:center;
+    border:solid 0.5px Black;
+    width:auto;
+}
+.tr{
+    text-align:center;   
+    border:solid 0.5px Black;
+    width:auto;
+}
+h1{
+    font-family:Gabriola;
+    font-size:xx-large;
+    font-style:italic;
+    text-align:center;
+}
+

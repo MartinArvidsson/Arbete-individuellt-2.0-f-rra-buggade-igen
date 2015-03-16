@@ -17,7 +17,7 @@
                     SelectMethod="TicketListView_GetData"
                     DataKeyNames="BiljettID">
                     <LayoutTemplate>
-                        <table>
+                        <table id="TableOne">
                             <tr>
                                 <th>
                                     Biljettyp
