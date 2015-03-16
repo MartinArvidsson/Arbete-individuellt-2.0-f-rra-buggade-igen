@@ -62,11 +62,13 @@ namespace IndividuelltProjekt.Ticketregpages
             {
                 Service.DeletePerson(PersonID);
                 Session["ValidationSession"] = "Du har tagit bort kontakten";
+                Response.RedirectToRoute("StartPerson");
             }
             catch (Exception)
             {
-                
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då Personuppgiften skulle Tas bort.");
+
+                ModelState.AddModelError
+                (String.Empty, "Ett oväntat fel inträffade då Personuppgiften skulle Tas bort. Förmodligen har personen en transaktion liggandes. Ta bort den först.");
             }
         }
 
