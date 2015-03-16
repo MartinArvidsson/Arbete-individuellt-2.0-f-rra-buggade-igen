@@ -62,6 +62,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Close.js" />
     <Content Include="Scripts\ConfirmDelete.js" />
+    <Content Include="Shared\Error.html" />
     <Content Include="Shared\Masterpage.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
